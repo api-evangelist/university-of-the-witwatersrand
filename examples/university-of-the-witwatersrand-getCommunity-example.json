@@ -1,0 +1,39 @@
+{
+  "id": "3f31c190-0111-4de4-bc8e-e743ccd645e5",
+  "uuid": "3f31c190-0111-4de4-bc8e-e743ccd645e5",
+  "name": "*Faculty of Commerce, Law and Management (Open Educational Resources )",
+  "handle": "10539/38213",
+  "metadata": {
+    "dc.identifier.uri": [
+      {
+        "value": "https://hdl.handle.net/10539/38213",
+        "language": null,
+        "authority": null,
+        "confidence": -1,
+        "place": 0
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "*Faculty of Commerce, Law and Management (Open Educational Resources )",
+        "language": null,
+        "authority": null,
+        "confidence": -1,
+        "place": 0
+      }
+    ]
+  },
+  "archivedItemsCount": -1,
+  "type": "community",
+  "_links": {
+    "self": {
+      "href": "https://wiredspace.wits.ac.za/server/api/core/communities/3f31c190-0111-4de4-bc8e-e743ccd645e5"
+    },
+    "collections": {
+      "href": "https://wiredspace.wits.ac.za/server/api/core/communities/3f31c190-0111-4de4-bc8e-e743ccd645e5/collections"
+    },
+    "subcommunities": {
+      "href": "https://wiredspace.wits.ac.za/server/api/core/communities/3f31c190-0111-4de4-bc8e-e743ccd645e5/subcommunities"
+    }
+  }
+}

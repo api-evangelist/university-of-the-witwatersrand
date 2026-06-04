@@ -44,6 +44,14 @@ apis:
     properties:
       - type: Documentation
         url: https://wiredspace.wits.ac.za/server/api
+      - type: OpenAPI
+        url: openapi/university-of-the-witwatersrand-wiredspace-rest.yaml
+      - type: JSONSchema
+        url: json-schema/university-of-the-witwatersrand-community-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-the-witwatersrand-community-structure.json
+      - type: x-example
+        url: examples/university-of-the-witwatersrand-getCommunity-example.json
   - aid: university-of-the-witwatersrand:wiredspace-oai
     name: WIReDSpace OAI-PMH
     description: >-
@@ -56,6 +64,10 @@ apis:
     properties:
       - type: Documentation
         url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+      - type: OpenAPI
+        url: openapi/university-of-the-witwatersrand-wiredspace-oai.yaml
+      - type: x-example
+        url: examples/university-of-the-witwatersrand-oai-identify-example.json
   - aid: university-of-the-witwatersrand:open-data-vault
     name: Wits Open Data Vault (Figshare)
     description: >-
@@ -70,6 +82,14 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.figshare.com/
+      - type: OpenAPI
+        url: openapi/university-of-the-witwatersrand-open-data-vault.yaml
+      - type: JSONSchema
+        url: json-schema/university-of-the-witwatersrand-article-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-the-witwatersrand-article-structure.json
+      - type: x-example
+        url: examples/university-of-the-witwatersrand-getArticle-example.json
 common:
   - type: Website
     url: https://www.wits.ac.za/
@@ -87,6 +107,12 @@ common:
     url: finops/university-of-the-witwatersrand-finops.yml
   - type: Review
     url: review.yml
+  - type: Rules
+    url: rules/university-of-the-witwatersrand-rules.yml
+  - type: Vocabulary
+    url: vocabulary/university-of-the-witwatersrand-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/university-of-the-witwatersrand-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

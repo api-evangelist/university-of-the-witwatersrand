@@ -1,0 +1,57 @@
+---
+# Spectral ruleset encoding patterns observed across the University of the
+# Witwatersrand machine-readable interfaces (DSpace 9.2 REST, OAI-PMH 2.0,
+# Figshare v2). Apply with: spectral lint -r this-file.yml <openapi.yaml>
+formats:
+  - oas3
+rules:
+  wits-info-contact:
+    description: API info should carry a contact for the Wits library/open scholarship team.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+  wits-info-license:
+    description: Standards-based university APIs should declare a license.
+    severity: warn
+    given: $.info
+    then:
+      field: license
+      function: truthy
+  wits-server-https:
+    description: All servers must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+  wits-operation-id:
+    description: Every operation must declare an operationId.
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: operationId
+      function: truthy
+  wits-operation-summary:
+    description: Every operation must have a summary.
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: summary
+      function: truthy
+  wits-200-response:
+    description: Read operations should document a 200 response.
+    severity: warn
+    given: $.paths[*].get.responses
+    then:
+      field: "200"
+      function: truthy
+  wits-tags-defined:
+    description: Operations should be grouped with tags for navigability.
+    severity: info
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: tags
+      function: truthy

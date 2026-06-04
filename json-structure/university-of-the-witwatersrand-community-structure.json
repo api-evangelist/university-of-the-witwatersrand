@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-the-witwatersrand/main/json-structure/university-of-the-witwatersrand-community-structure.json",
+  "name": "WIReDSpaceCommunity",
+  "description": "JSON Structure for a WIReDSpace (DSpace 9.2) community object.",
+  "type": "object",
+  "properties": {
+    "uuid": { "type": "string" },
+    "name": { "type": "string" },
+    "handle": { "type": "string" },
+    "archivedItemsCount": { "type": "int32" },
+    "type": { "type": "string" },
+    "metadata": {
+      "type": "map",
+      "values": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "value": { "type": "string" },
+            "language": { "type": ["null", "string"] },
+            "authority": { "type": ["null", "string"] },
+            "confidence": { "type": "int32" },
+            "place": { "type": "int32" }
+          }
+        }
+      }
+    }
+  },
+  "required": ["uuid", "type"]
+}

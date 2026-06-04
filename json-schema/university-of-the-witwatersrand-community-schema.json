@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-the-witwatersrand/main/json-schema/university-of-the-witwatersrand-community-schema.json",
+  "title": "WIReDSpace Community",
+  "description": "A DSpace community container as returned by the WIReDSpace REST API (DSpace 9.2).",
+  "type": "object",
+  "required": ["uuid", "type", "_links"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "handle": { "type": "string", "examples": ["10539/38213"] },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "$ref": "#/definitions/metadataValue" }
+      }
+    },
+    "archivedItemsCount": { "type": "integer" },
+    "type": { "type": "string", "const": "community" },
+    "_links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": { "href": { "type": "string", "format": "uri" } }
+      }
+    }
+  },
+  "definitions": {
+    "metadataValue": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "string" },
+        "language": { "type": ["string", "null"] },
+        "authority": { "type": ["string", "null"] },
+        "confidence": { "type": "integer" },
+        "place": { "type": "integer" }
+      },
+      "required": ["value"]
+    }
+  }
+}

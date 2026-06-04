@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "wits": "https://www.wits.ac.za/ns#",
+    "dspace": "https://wiredspace.wits.ac.za/server/api/ns#",
+    "figshare": "https://api.figshare.com/v2/ns#",
+
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+
+    "institution": {
+      "@id": "schema:CollegeOrUniversity",
+      "@type": "@id"
+    },
+    "University": "schema:CollegeOrUniversity",
+
+    "WIReDSpace": "schema:DataCatalog",
+    "OpenDataVault": "schema:DataCatalog",
+
+    "Community": "dspace:Community",
+    "Collection": "schema:Collection",
+    "Item": "schema:CreativeWork",
+    "uuid": "schema:identifier",
+    "handle": "schema:identifier",
+    "metadata": "schema:additionalProperty",
+    "archivedItemsCount": "schema:size",
+
+    "Article": "schema:Dataset",
+    "doi": {
+      "@id": "schema:identifier",
+      "@type": "@id"
+    },
+    "title": "schema:name",
+    "created_date": {
+      "@id": "schema:dateCreated",
+      "@type": "schema:Date"
+    },
+    "defined_type_name": "schema:additionalType",
+    "url_public_html": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "thumb": {
+      "@id": "schema:thumbnailUrl",
+      "@type": "@id"
+    }
+  },
+  "@type": "University",
+  "name": "University of the Witwatersrand",
+  "url": "https://www.wits.ac.za/",
+  "description": "Public research university in Johannesburg, South Africa, exposing standards-based machine-readable interfaces via the WIReDSpace institutional repository (DSpace 9.2 REST + OAI-PMH) and the Figshare-powered Wits Open Data Vault.",
+  "wits:repository": {
+    "@type": "WIReDSpace",
+    "name": "WIReDSpace",
+    "url": "https://wiredspace.wits.ac.za/"
+  },
+  "wits:dataVault": {
+    "@type": "OpenDataVault",
+    "name": "Wits Open Data Vault",
+    "url": "https://witsuniversity.figshare.com/"
+  }
+}

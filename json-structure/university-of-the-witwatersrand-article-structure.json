@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-the-witwatersrand/main/json-structure/university-of-the-witwatersrand-article-structure.json",
+  "name": "FigshareArticle",
+  "description": "JSON Structure for a Figshare article/dataset record as exposed by the Wits Open Data Vault.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "int64" },
+    "title": { "type": "string" },
+    "doi": { "type": "string" },
+    "handle": { "type": "string" },
+    "url": { "type": "string" },
+    "url_public_html": { "type": "string" },
+    "url_public_api": { "type": "string" },
+    "thumb": { "type": "string" },
+    "defined_type": { "type": "int32" },
+    "defined_type_name": { "type": "string" },
+    "resource_doi": { "type": "string" },
+    "resource_title": { "type": "string" },
+    "created_date": { "type": "string" },
+    "timeline": {
+      "type": "object",
+      "properties": {
+        "posted": { "type": "string" },
+        "firstOnline": { "type": "string" },
+        "revision": { "type": "string" }
+      }
+    }
+  },
+  "required": ["id", "title", "doi", "url", "defined_type_name"]
+}

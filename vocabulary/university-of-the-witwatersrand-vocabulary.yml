@@ -1,0 +1,68 @@
+---
+vocabulary:
+  name: University of the Witwatersrand API Vocabulary
+  description: >-
+    Controlled vocabulary of the core terms used across the University of the
+    Witwatersrand machine-readable interfaces: the WIReDSpace DSpace 9.2
+    institutional repository (REST and OAI-PMH) and the Figshare-powered Wits
+    Open Data Vault. Definitions reflect terms verified live against the
+    deployments.
+  version: "1.0.0"
+  terms:
+    - term: Community
+      definition: >-
+        A top-level or nested DSpace container that organizes collections,
+        typically aligned to a faculty, school, or research grouping at Wits.
+      tags: [dspace, wiredspace, container]
+    - term: Collection
+      definition: >-
+        A DSpace container holding items (records) within a community.
+      tags: [dspace, wiredspace, container]
+    - term: Item
+      definition: >-
+        An individual DSpace record (e.g. a thesis, article, or report) with
+        Dublin Core metadata and one or more bitstreams.
+      tags: [dspace, wiredspace, record]
+    - term: Bitstream
+      definition: >-
+        A binary file (PDF, dataset, etc.) attached to a DSpace item via a bundle.
+      tags: [dspace, wiredspace, file]
+    - term: Handle
+      definition: >-
+        A persistent identifier assigned to DSpace objects under the 10539 prefix,
+        e.g. 10539/38213, resolvable via hdl.handle.net.
+      tags: [identifier, persistent, dspace]
+    - term: Metadata Value
+      definition: >-
+        A single Dublin Core (or other schema) metadata entry on a DSpace object,
+        carrying value, language, authority, confidence, and place.
+      tags: [dspace, metadata, dublin-core]
+    - term: OAI-PMH
+      definition: >-
+        Open Archives Initiative Protocol for Metadata Harvesting v2.0, the
+        verb-driven XML interface for bulk metadata harvesting from WIReDSpace.
+      tags: [oai-pmh, harvesting, metadata]
+    - term: Verb
+      definition: >-
+        The OAI-PMH operation selector (Identify, ListMetadataFormats, ListSets,
+        ListIdentifiers, ListRecords, GetRecord).
+      tags: [oai-pmh, operation]
+    - term: Set
+      definition: >-
+        An OAI-PMH grouping used for selective harvesting of a subset of records.
+      tags: [oai-pmh, harvesting]
+    - term: Article
+      definition: >-
+        A Figshare research output record (dataset, software, paper) in the Wits
+        Open Data Vault, carrying a DOI and download URLs.
+      tags: [figshare, open-data, dataset]
+    - term: DOI
+      definition: >-
+        Digital Object Identifier minted for datasets in the Wits Open Data Vault,
+        e.g. 10.6084/m9.figshare.<id>.
+      tags: [identifier, persistent, figshare, doi]
+    - term: Defined Type
+      definition: >-
+        Figshare classification of a research output (e.g. dataset, software,
+        figure, media), exposed as defined_type and defined_type_name.
+      tags: [figshare, classification]

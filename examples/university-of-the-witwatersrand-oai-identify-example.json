@@ -1,0 +1,12 @@
+{
+  "note": "The WIReDSpace OAI-PMH endpoint returns XML, not JSON. This file captures the verified key fields from the live Identify response (verb=Identify) in JSON form for cataloging convenience.",
+  "request": "https://wiredspace.wits.ac.za/server/oai/request?verb=Identify",
+  "identify": {
+    "repositoryName": "WIReDSpace",
+    "baseURL": "https://wiredspace.wits.ac.za/server/oai/request",
+    "protocolVersion": "2.0",
+    "adminEmail": "openscholarship.library@wits.ac.za",
+    "granularity": "YYYY-MM-DDThh:mm:ssZ",
+    "deletedRecord": "transient"
+  }
+}
