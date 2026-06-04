@@ -1,0 +1,93 @@
+---
+aid: university-of-the-witwatersrand
+name: University of the Witwatersrand
+description: >-
+  The University of the Witwatersrand (Wits) is a leading public research
+  university in Johannesburg, South Africa, ranked #268 in the QS World
+  University Rankings 2025. Wits does not operate a central, branded developer
+  portal, but it exposes standards-based machine-readable interfaces through its
+  library and open-research infrastructure. The most clearly public surfaces are
+  the WIReDSpace institutional repository (DSpace 9.2), which offers both a REST
+  API and an OAI-PMH metadata harvesting endpoint, and the Wits Open Data Vault,
+  a Figshare-powered research data repository carrying DOIs for datasets. Other
+  systems (Springshare LibGuides/LibCal, identity/SSO, and student services) are
+  vendor-hosted and generally gated rather than openly documented.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/university-of-the-witwatersrand/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - Open Data
+  - Library
+  - Institutional Repository
+  - South Africa
+  - Africa
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: university-of-the-witwatersrand:wiredspace-rest
+    name: WIReDSpace DSpace REST API
+    description: >-
+      WIReDSpace is the Wits institutional repository, running DSpace 9.2. Its
+      REST API exposes a HAL/JSON root document at /server/api with endpoints for
+      communities, collections, items, bundles, bitstreams, discovery/browse,
+      and more. Verified live returning a DSpace 9.2 root document.
+    humanURL: https://wiredspace.wits.ac.za/
+    baseURL: https://wiredspace.wits.ac.za/server/api
+    tags: [ Institutional Repository, DSpace, Open Access, Research, Library, REST ]
+    properties:
+      - type: Documentation
+        url: https://wiredspace.wits.ac.za/server/api
+  - aid: university-of-the-witwatersrand:wiredspace-oai
+    name: WIReDSpace OAI-PMH
+    description: >-
+      OAI-PMH 2.0 metadata harvesting interface for the WIReDSpace institutional
+      repository. Verified live with an Identify response naming the repository
+      "WIReDSpace" and protocol version 2.0.
+    humanURL: https://wiredspace.wits.ac.za/
+    baseURL: https://wiredspace.wits.ac.za/server/oai/request
+    tags: [ OAI-PMH, Metadata Harvesting, Institutional Repository, Open Access, Library ]
+    properties:
+      - type: Documentation
+        url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - aid: university-of-the-witwatersrand:open-data-vault
+    name: Wits Open Data Vault (Figshare)
+    description: >-
+      The Wits Open Data Vault is the university's research data repository,
+      launched in 2025 on the Figshare platform and integrated with Altmetric and
+      Dimensions. Datasets are assigned DOIs. Programmatic access is available via
+      the standard Figshare public REST API (api.figshare.com/v2); the
+      institutional portal itself is bot-restricted.
+    humanURL: https://info.figshare.com/university-of-the-witwatersrand-chooses-figshare-to-support-its-open-data-goals/
+    baseURL: https://api.figshare.com/v2
+    tags: [ Research Data, Open Data, Figshare, DOI, Repository ]
+    properties:
+      - type: Documentation
+        url: https://docs.figshare.com/
+common:
+  - type: Website
+    url: https://www.wits.ac.za/
+  - type: Library
+    url: https://www.wits.ac.za/library/
+  - type: GitHub
+    url: https://github.com/WitsSoftDev
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/university-of-the-witwatersrand/
+  - type: Plans
+    url: plans/university-of-the-witwatersrand-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/university-of-the-witwatersrand-rate-limits.yml
+  - type: FinOps
+    url: finops/university-of-the-witwatersrand-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+---

@@ -1,0 +1,47 @@
+---
+name: University of the Witwatersrand
+description: University of the Witwatersrand public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/university-of-the-witwatersrand/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 2
+    summary: >-
+      Wits has no central developer portal, but its library/open-research stack
+      exposes solid standards-based APIs. Verified live: the WIReDSpace DSpace 9.2
+      REST API root and the WIReDSpace OAI-PMH Identify response. The Wits Open
+      Data Vault (Figshare, 2025) is confirmed via official sources but its portal
+      blocks bots (403), so the Figshare public API and announcement page are
+      cataloged instead of an institutional URL. No SIS/timetable/student API and
+      no confirmed central institutional GitHub org were found. No endpoints were
+      fabricated.
+    endpoints:
+      - url: https://wiredspace.wits.ac.za/server/api
+        status: 200
+        note: DSpace 9.2 REST API root, HAL/JSON, verified live.
+      - url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+        status: 200
+        note: OAI-PMH 2.0 Identify, repositoryName "WIReDSpace", verified live.
+      - url: https://wiredspace.wits.ac.za/oai/request
+        status: 404
+        note: Legacy DSpace OAI path; not used by DSpace 9.x (use /server/oai/request).
+      - url: https://wiredspace.wits.ac.za/
+        status: 200
+        note: WIReDSpace repository UI (DSpace, LYRASIS).
+      - url: https://wits.figshare.com/
+        status: 403
+        note: Wits Open Data Vault Figshare portal; blocks automated fetches.
+      - url: https://api.figshare.com/v2
+        status: 200
+        note: Figshare public REST API powering the Open Data Vault (institutional filter via params).
+      - url: https://www.wits.ac.za/
+        status: 200
+        note: Official university homepage, "Home - Wits University".
+      - url: https://github.com/WitsSoftDev
+        status: 200
+        note: Wits Maths Sciences Software Development Group org; departmental, not central institutional org.
+      - url: https://www.linkedin.com/school/university-of-the-witwatersrand/
+        status: 999
+        note: Official LinkedIn school page; LinkedIn returns 999 to automated fetches (bot-blocked).
+---
