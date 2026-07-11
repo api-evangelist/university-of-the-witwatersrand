@@ -91,6 +91,8 @@ apis:
       - type: x-example
         url: examples/university-of-the-witwatersrand-getArticle-example.json
 common:
+  - type: DomainSecurity
+    url: security/university-of-the-witwatersrand-domain-security.yml
   - type: Authentication
     url: authentication/university-of-the-witwatersrand-authentication.yml
   - type: OAuthScopes
