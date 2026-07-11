@@ -91,6 +91,10 @@ apis:
       - type: x-example
         url: examples/university-of-the-witwatersrand-getArticle-example.json
 common:
+  - type: Authentication
+    url: authentication/university-of-the-witwatersrand-authentication.yml
+  - type: OAuthScopes
+    url: scopes/university-of-the-witwatersrand-scopes.yml
   - type: Website
     url: https://www.wits.ac.za/
   - type: Library
