@@ -13,9 +13,22 @@ description: >-
   systems (Springshare LibGuides/LibCal, identity/SSO, and student services) are
   vendor-hosted and generally gated rather than openly documented.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/university-of-the-witwatersrand.png
 url: https://raw.githubusercontent.com/api-evangelist/university-of-the-witwatersrand/refs/heads/main/apis.yml
 tags:
   - Education
@@ -31,65 +44,458 @@ created: '2026-06-03'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: university-of-the-witwatersrand:wiredspace-rest
-    name: WIReDSpace DSpace REST API
-    description: >-
-      WIReDSpace is the Wits institutional repository, running DSpace 9.2. Its
-      REST API exposes a HAL/JSON root document at /server/api with endpoints for
-      communities, collections, items, bundles, bitstreams, discovery/browse,
-      and more. Verified live returning a DSpace 9.2 root document.
-    humanURL: https://wiredspace.wits.ac.za/
-    baseURL: https://wiredspace.wits.ac.za/server/api
-    tags: [ Institutional Repository, DSpace, Open Access, Research, Library, REST ]
-    properties:
-      - type: Documentation
-        url: https://wiredspace.wits.ac.za/server/api
-      - type: OpenAPI
-        url: openapi/university-of-the-witwatersrand-wiredspace-rest.yaml
-      - type: JSONSchema
-        url: json-schema/university-of-the-witwatersrand-community-schema.json
-      - type: x-json-structure
-        url: json-structure/university-of-the-witwatersrand-community-structure.json
-      - type: x-example
-        url: examples/university-of-the-witwatersrand-getCommunity-example.json
-  - aid: university-of-the-witwatersrand:wiredspace-oai
-    name: WIReDSpace OAI-PMH
-    description: >-
-      OAI-PMH 2.0 metadata harvesting interface for the WIReDSpace institutional
-      repository. Verified live with an Identify response naming the repository
-      "WIReDSpace" and protocol version 2.0.
-    humanURL: https://wiredspace.wits.ac.za/
-    baseURL: https://wiredspace.wits.ac.za/server/oai/request
-    tags: [ OAI-PMH, Metadata Harvesting, Institutional Repository, Open Access, Library ]
-    properties:
-      - type: Documentation
-        url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
-      - type: OpenAPI
-        url: openapi/university-of-the-witwatersrand-wiredspace-oai.yaml
-      - type: x-example
-        url: examples/university-of-the-witwatersrand-oai-identify-example.json
-  - aid: university-of-the-witwatersrand:open-data-vault
-    name: Wits Open Data Vault (Figshare)
-    description: >-
-      The Wits Open Data Vault is the university's research data repository,
-      launched in 2025 on the Figshare platform and integrated with Altmetric and
-      Dimensions. Datasets are assigned DOIs. Programmatic access is available via
-      the standard Figshare public REST API (api.figshare.com/v2); the
-      institutional portal itself is bot-restricted.
-    humanURL: https://info.figshare.com/university-of-the-witwatersrand-chooses-figshare-to-support-its-open-data-goals/
-    baseURL: https://api.figshare.com/v2
-    tags: [ Research Data, Open Data, Figshare, DOI, Repository ]
-    properties:
-      - type: Documentation
-        url: https://docs.figshare.com/
-      - type: OpenAPI
-        url: openapi/university-of-the-witwatersrand-open-data-vault.yaml
-      - type: JSONSchema
-        url: json-schema/university-of-the-witwatersrand-article-schema.json
-      - type: x-json-structure
-        url: json-structure/university-of-the-witwatersrand-article-structure.json
-      - type: x-example
-        url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-altmetric-api
+  name: University of the Witwatersrand altmetric API
+  description: The altmetric API from University of the Witwatersrand — 1 operation(s) for altmetric.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - altmetric
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-altmetric-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-articles-api
+  name: University of the Witwatersrand articles API
+  description: The articles API from University of the Witwatersrand — 34 operation(s) for articles.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - articles
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-articles-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-authors-api
+  name: University of the Witwatersrand authors API
+  description: The authors API from University of the Witwatersrand — 2 operation(s) for authors.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - authors
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-authors-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-collections-api
+  name: University of the Witwatersrand collections API
+  description: >-
+    The collections API from University of the Witwatersrand — 23 operation(s) for collections.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - collections
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-collections-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-communities-api
+  name: University of the Witwatersrand Communities API
+  description: Top-level and sub-community containers
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - Communities
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-communities-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-discovery-api
+  name: University of the Witwatersrand Discovery API
+  description: Browse and search/discovery endpoints
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-discovery-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-institutions-api
+  name: University of the Witwatersrand institutions API
+  description: >-
+    The institutions API from University of the Witwatersrand — 20 operation(s) for institutions.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - institutions
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-institutions-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-items-api
+  name: University of the Witwatersrand Items API
+  description: Repository items (records)
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - Items
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-items-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-oauth-api
+  name: University of the Witwatersrand oauth API
+  description: The oauth API from University of the Witwatersrand — 1 operation(s) for oauth.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - oauth
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-other-api
+  name: University of the Witwatersrand other API
+  description: The other API from University of the Witwatersrand — 7 operation(s) for other.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - other
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-other-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-profiles-api
+  name: University of the Witwatersrand profiles API
+  description: The profiles API from University of the Witwatersrand — 2 operation(s) for profiles.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-projects-api
+  name: University of the Witwatersrand projects API
+  description: The projects API from University of the Witwatersrand — 17 operation(s) for projects.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - projects
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-projects-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-request-api
+  name: University of the Witwatersrand Request API
+  description: The Request API from University of the Witwatersrand — 1 operation(s) for request.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - Request
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-request-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-root-api
+  name: University of the Witwatersrand Root API
+  description: HAL/JSON API root document
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - Root
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-root-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
+- aid: university-of-the-witwatersrand:university-of-the-witwatersrand-symplectic-api
+  name: University of the Witwatersrand symplectic API
+  description: The symplectic API from University of the Witwatersrand — 5 operation(s) for symplectic.
+  humanURL: https://wiredspace.wits.ac.za/
+  baseURL: https://wiredspace.wits.ac.za/server/api
+  tags:
+  - symplectic
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-the-witwatersrand-symplectic-api-openapi.yml
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/api
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-community-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-community-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getCommunity-example.json
+  - type: Documentation
+    url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-oai-identify-example.json
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-the-witwatersrand-article-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-the-witwatersrand-article-structure.json
+  - type: x-example
+    url: examples/university-of-the-witwatersrand-getArticle-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/university-of-the-witwatersrand-agentic-access.yml
