@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: WIReDSpace OAI-PMH Interface
+  description: >-
+    Open Archives Initiative Protocol for Metadata Harvesting (OAI-PMH) version
+    2.0 interface for WIReDSpace, the University of the Witwatersrand
+    institutional repository. The protocol is a single-endpoint, verb-driven
+    HTTP API returning XML. Verified live: the Identify response names the
+    repository "WIReDSpace", protocolVersion 2.0, granularity
+    YYYY-MM-DDThh:mm:ssZ, and deletedRecord policy "transient". Responses are
+    XML conforming to the OAI-PMH schema, not JSON; this specification documents
+    the request surface only.
+  version: "2.0"
+  contact:
+    name: Wits Open Scholarship, Library
+    email: openscholarship.library@wits.ac.za
+    url: https://wiredspace.wits.ac.za/
+  license:
+    name: OAI-PMH Protocol
+    url: http://www.openarchives.org/OAI/openarchivesprotocol.html
+servers:
+  - url: https://wiredspace.wits.ac.za/server/oai
+    description: WIReDSpace OAI-PMH production endpoint
+externalDocs:
+  description: OAI-PMH 2.0 specification
+  url: http://www.openarchives.org/OAI/2.0/openarchivesprotocol.htm
+paths:
+  /request:
+    get:
+      summary: OAI-PMH request endpoint
+      description: >-
+        Single OAI-PMH entry point. The `verb` parameter selects the operation.
+        Supported verbs are Identify, ListMetadataFormats, ListSets,
+        ListIdentifiers, ListRecords, and GetRecord. Selective harvesting
+        parameters (from, until, set, metadataPrefix, identifier,
+        resumptionToken) apply per verb as defined by the OAI-PMH 2.0 protocol.
+      operationId: oaiRequest
+      parameters:
+        - name: verb
+          in: query
+          required: true
+          description: The OAI-PMH verb (operation) to perform.
+          schema:
+            type: string
+            enum:
+              - Identify
+              - ListMetadataFormats
+              - ListSets
+              - ListIdentifiers
+              - ListRecords
+              - GetRecord
+        - name: identifier
+          in: query
+          required: false
+          description: OAI identifier of a record (required for GetRecord; optional for ListMetadataFormats).
+          schema:
+            type: string
+            example: "oai:wiredspace.wits.ac.za:10539/38213"
+        - name: metadataPrefix
+          in: query
+          required: false
+          description: Metadata format prefix (e.g. oai_dc). Required for GetRecord, ListRecords, ListIdentifiers.
+          schema:
+            type: string
+            example: oai_dc
+        - name: from
+          in: query
+          required: false
+          description: Lower bound for selective harvesting by datestamp (UTC).
+          schema:
+            type: string
+            example: "2025-01-01T00:00:00Z"
+        - name: until
+          in: query
+          required: false
+          description: Upper bound for selective harvesting by datestamp (UTC).
+          schema:
+            type: string
+            example: "2025-12-31T23:59:59Z"
+        - name: set
+          in: query
+          required: false
+          description: Set spec for selective harvesting by set membership.
+          schema:
+            type: string
+        - name: resumptionToken
+          in: query
+          required: false
+          description: Flow-control token returned in a previous incomplete list response.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: >-
+            An OAI-PMH 2.0 XML response document. The root element is OAI-PMH,
+            containing responseDate, request, and either a verb-specific payload
+            element or an error element.
+          content:
+            text/xml:
+              schema:
+                type: string
+                description: OAI-PMH XML response document.
+components: {}

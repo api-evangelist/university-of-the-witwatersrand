@@ -1,0 +1,42 @@
+{
+  "provider": "university-of-the-witwatersrand",
+  "sources": [
+    "university-of-the-witwatersrand-altmetric-api-openapi.yml",
+    "university-of-the-witwatersrand-articles-api-openapi.yml",
+    "university-of-the-witwatersrand-authors-api-openapi.yml",
+    "university-of-the-witwatersrand-collections-api-openapi.yml",
+    "university-of-the-witwatersrand-communities-api-openapi.yml",
+    "university-of-the-witwatersrand-discovery-api-openapi.yml",
+    "university-of-the-witwatersrand-institutions-api-openapi.yml",
+    "university-of-the-witwatersrand-items-api-openapi.yml",
+    "university-of-the-witwatersrand-oauth-api-openapi.yml",
+    "university-of-the-witwatersrand-other-api-openapi.yml",
+    "university-of-the-witwatersrand-profiles-api-openapi.yml",
+    "university-of-the-witwatersrand-projects-api-openapi.yml",
+    "university-of-the-witwatersrand-request-api-openapi.yml",
+    "university-of-the-witwatersrand-root-api-openapi.yml",
+    "university-of-the-witwatersrand-symplectic-api-openapi.yml"
+  ],
+  "outputs": [
+    "university-of-the-witwatersrand-altmetric-api-openapi.yml",
+    "university-of-the-witwatersrand-articles-api-openapi.yml",
+    "university-of-the-witwatersrand-authors-api-openapi.yml",
+    "university-of-the-witwatersrand-collections-api-openapi.yml",
+    "university-of-the-witwatersrand-communities-api-openapi.yml",
+    "university-of-the-witwatersrand-discovery-api-openapi.yml",
+    "university-of-the-witwatersrand-institutions-api-openapi.yml",
+    "university-of-the-witwatersrand-items-api-openapi.yml",
+    "university-of-the-witwatersrand-oauth-api-openapi.yml",
+    "university-of-the-witwatersrand-other-api-openapi.yml",
+    "university-of-the-witwatersrand-profiles-api-openapi.yml",
+    "university-of-the-witwatersrand-projects-api-openapi.yml",
+    "university-of-the-witwatersrand-request-api-openapi.yml",
+    "university-of-the-witwatersrand-root-api-openapi.yml",
+    "university-of-the-witwatersrand-symplectic-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
