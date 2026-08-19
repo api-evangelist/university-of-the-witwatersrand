@@ -1,0 +1,192 @@
+{
+  "item": [
+    {
+      "id": "0cb66d2e-4100-4a40-8230-bb0489a0911f",
+      "name": "altmetric",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "94e9fa3e-9248-4394-96af-e7d0763f1995",
+          "name": "List Altmetric Institutions",
+          "request": {
+            "name": "List Altmetric Institutions",
+            "description": {
+              "content": "Returns a list of institutions available for Altmetric reporting",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "altmetric",
+                "institutions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Where to start the listing. The offset of the first item."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4198c41-4850-4dce-a3b9-a2c6bb82e79d",
+              "name": "OK. An array of Altmetric institutions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "altmetric",
+                    "institutions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"My Institution\",\n    \"custom_domain\": \"myinstitution.figshare.com\"\n  },\n  {\n    \"id\": 1,\n    \"name\": \"My Institution\",\n    \"custom_domain\": \"myinstitution.figshare.com\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc41b2b1-a49f-4eec-840c-4f9bb55d56da",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "altmetric",
+                    "institutions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6369,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c0c01d4-67ea-4139-9511-372d9803990e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "altmetric",
+                    "institutions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.figshare.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "deab2c6a-9a68-459f-8e23-1dfc29644ada",
+    "name": "Figshare altmetric API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Figshare API v2 - Full REST API documentation for managing articles, collections, projects and more. Saved for the University of the Witwatersrand Open Data Vault, which is hosted on the Figshare platform; datasets are accessible programmatically via this public API.\n\nContact Support:\n Name: Figshare Support",
+      "type": "text/plain"
+    }
+  }
+}

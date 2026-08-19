@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Figshare altmetric Discovery API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List browse indexes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.figshare.com/v2/discover/browses"
+          },
+          "docs": "Returns the configured discovery browse indexes (e.g. by title, author, subject, date issued)."
+        },
+        {
+          "info": {
+            "name": "Search discovery objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.figshare.com/v2/discover/search/objects",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "dsoType",
+                "value": "",
+                "type": "query",
+                "description": "Restrict results to a DSpace object type (community, collection, item)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page size"
+              }
+            ]
+          },
+          "docs": "Full-text and faceted search across indexed DSpace objects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

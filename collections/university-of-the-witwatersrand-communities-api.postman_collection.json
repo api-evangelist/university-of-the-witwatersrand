@@ -1,0 +1,252 @@
+{
+  "item": [
+    {
+      "id": "d61925ea-59ec-49cd-8340-bb7a453dfe40",
+      "name": "Communities",
+      "description": {
+        "content": "Top-level and sub-community containers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3ce6ffbb-ff6a-41c3-baeb-fb50ec9d6b19",
+          "name": "List communities",
+          "request": {
+            "name": "List communities",
+            "description": {
+              "content": "Returns a paginated HAL collection of top-level communities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "core",
+                "communities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "Page size"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a064506f-4e80-421b-a5db-873478f274af",
+              "name": "Paginated list of communities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "communities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"communities\": [\n      {\n        \"id\": \"7bc38839-d1ac-0b27-4075-969f7c9acb76\",\n        \"uuid\": \"0e6acb21-45d6-4925-d898-7d508e250e21\",\n        \"name\": \"string\",\n        \"handle\": \"10539/38213\",\n        \"metadata\": {\n          \"key_0\": [\n            {\n              \"value\": \"string\",\n              \"language\": \"string\",\n              \"authority\": \"string\",\n              \"confidence\": 4551,\n              \"place\": 2543\n            },\n            {\n              \"value\": \"string\",\n              \"language\": \"string\",\n              \"authority\": \"string\",\n              \"confidence\": 184,\n              \"place\": 5896\n            }\n          ],\n          \"key_1\": [\n            {\n              \"value\": \"string\",\n              \"language\": \"string\",\n              \"authority\": \"string\",\n              \"confidence\": 8418,\n              \"place\": 1416\n            },\n            {\n              \"value\": \"string\",\n              \"language\": \"string\",\n              \"authority\": \"string\",\n              \"confidence\": 1235,\n              \"place\": 7200\n            }\n          ]\n        },\n        \"archivedItemsCount\": 9747,\n        \"type\": \"community\",\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"https://EqPjRDrcuBBeOGYkMQ.yghLgvVU+iD06vQoJhjvsE2fia\"\n          }\n        }\n      },\n      {\n        \"id\": \"7827a2fb-321d-9d21-6540-e1d5b4f73520\",\n        \"uuid\": \"d3ab90e7-8de8-25c2-3b89-8dc890a2cbe7\",\n        \"name\": \"string\",\n        \"handle\": \"10539/38213\",\n        \"metadata\": {\n          \"key_0\": [\n            {\n              \"value\": \"string\",\n              \"language\": \"string\",\n              \"authority\": \"string\",\n              \"confidence\": 2492,\n              \"place\": 9392\n            },\n            {\n              \"value\": \"string\",\n              \"language\": \"string\",\n              \"authority\": \"string\",\n              \"confidence\": 8567,\n              \"place\": 4377\n            }\n          ],\n          \"key_1\": [\n            {\n              \"value\": \"string\",\n              \"language\": \"string\",\n              \"authority\": \"string\",\n              \"confidence\": 5755,\n              \"place\": 7092\n            },\n            {\n              \"value\": \"string\",\n              \"language\": \"string\",\n              \"authority\": \"string\",\n              \"confidence\": 9135,\n              \"place\": 2980\n            }\n          ]\n        },\n        \"archivedItemsCount\": 3301,\n        \"type\": \"community\",\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"https://bpJvkzNWqU.qetV-PNXee1jMKg5BFdI3OP+6M\"\n          },\n          \"key_1\": {\n            \"href\": \"https://MRqHAOzqqEoF.kslwbQnecr-9u\"\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"http://oXLEFjKvpFfsJOD.ukhcSok5Ewai6MCEVOB9FNP0d3QB,\"\n    },\n    \"key_1\": {\n      \"href\": \"http://dKOPHgKHynuGjVrkTo.axhwbHGocBxGTsoBR\"\n    },\n    \"key_2\": {\n      \"href\": \"https://eoTdEQSlLbeVmDFLJVQecRVnTs.enbdQECoZeP-LPJaclcmPw7ZY6eclwXPLUTQuaH-+jsYkkI5eLa.hAQQTk8Gw+XwWdIqFuqWLW+ao\"\n    }\n  },\n  \"page\": {\n    \"size\": 5540,\n    \"totalElements\": 7254,\n    \"totalPages\": 6528,\n    \"number\": 6713\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "abc37cf8-75a6-4b68-a355-d9002939b9d6",
+          "name": "Get a community by UUID",
+          "request": {
+            "name": "Get a community by UUID",
+            "description": {},
+            "url": {
+              "path": [
+                "core",
+                "communities",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) The UUID of the DSpace object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba8ff0ea-362d-46d6-ac73-3f6a3bc3128a",
+              "name": "A single community",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "communities",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the DSpace object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4fe99bb0-b4e9-ee73-48ce-a0dbec54338c\",\n  \"uuid\": \"2f98adab-0878-e14e-6752-80417a1ed0eb\",\n  \"name\": \"string\",\n  \"handle\": \"10539/38213\",\n  \"metadata\": {\n    \"key_0\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 4448,\n        \"place\": 220\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 9634,\n        \"place\": 9059\n      }\n    ]\n  },\n  \"archivedItemsCount\": 5333,\n  \"type\": \"community\",\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"https://BJs.oxwjzukGesQLHTvEMYg5NaZCkt9yffyXWxXd2+FCST7-8Mpn7Ke8oBUAGJucfHqsdpy.v0\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90e4aca1-1efc-4a7f-b835-86a0e9b93650",
+              "name": "Community not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "communities",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the DSpace object"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.figshare.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1223cd65-5ce0-4c1c-b0b8-8c0d87bae9f2",
+    "name": "Figshare altmetric Communities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Figshare API v2 - Full REST API documentation for managing articles, collections, projects and more. Saved for the University of the Witwatersrand Open Data Vault, which is hosted on the Figshare platform; datasets are accessible programmatically via this public API.\n\nContact Support:\n Name: Figshare Support",
+      "type": "text/plain"
+    }
+  }
+}

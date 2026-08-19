@@ -1,0 +1,220 @@
+{
+  "item": [
+    {
+      "id": "12000e87-992b-4230-993f-ac5e1b2853e7",
+      "name": "Discovery",
+      "description": {
+        "content": "Browse and search/discovery endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88714d49-e1e6-453d-93a3-dc0e7db618e2",
+          "name": "List browse indexes",
+          "request": {
+            "name": "List browse indexes",
+            "description": {
+              "content": "Returns the configured discovery browse indexes (e.g. by title, author, subject, date issued).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "discover",
+                "browses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e74fe2c-5535-4db7-ad99-ca681752724e",
+              "name": "Browse indexes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discover",
+                    "browses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {},\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"https://BduHPStvAjhje.kfkRPUy49-ka1jcBGbEzmqUVnHisRUnpG9F\"\n    },\n    \"key_1\": {\n      \"href\": \"http://LvlKzFleSQPPJVfJPpE.tgQ3LNXdisUlGyHsyA-5LZAcj71cJ49o1zQRQEsLyc\"\n    }\n  },\n  \"page\": {\n    \"size\": 1297,\n    \"totalElements\": 2806,\n    \"totalPages\": 7147,\n    \"number\": 2429\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "164bebc3-5b5e-47cc-ab6b-d142b8519fb2",
+          "name": "Search discovery objects",
+          "request": {
+            "name": "Search discovery objects",
+            "description": {
+              "content": "Full-text and faceted search across indexed DSpace objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "discover",
+                "search",
+                "objects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Search query string"
+                },
+                {
+                  "disabled": false,
+                  "key": "dsoType",
+                  "value": "<string>",
+                  "description": "Restrict results to a DSpace object type (community, collection, item)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "Page size"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20271ce1-4c5c-4f75-9b47-ffc0e228ca58",
+              "name": "Search result page",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discover",
+                    "search",
+                    "objects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dsoType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {},\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"https://BduHPStvAjhje.kfkRPUy49-ka1jcBGbEzmqUVnHisRUnpG9F\"\n    },\n    \"key_1\": {\n      \"href\": \"http://LvlKzFleSQPPJVfJPpE.tgQ3LNXdisUlGyHsyA-5LZAcj71cJ49o1zQRQEsLyc\"\n    }\n  },\n  \"page\": {\n    \"size\": 1297,\n    \"totalElements\": 2806,\n    \"totalPages\": 7147,\n    \"number\": 2429\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.figshare.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2526e8b5-67a0-46d6-8123-6ee606848204",
+    "name": "Figshare altmetric Discovery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Figshare API v2 - Full REST API documentation for managing articles, collections, projects and more. Saved for the University of the Witwatersrand Open Data Vault, which is hosted on the Figshare platform; datasets are accessible programmatically via this public API.\n\nContact Support:\n Name: Figshare Support",
+      "type": "text/plain"
+    }
+  }
+}

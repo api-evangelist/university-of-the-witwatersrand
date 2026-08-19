@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Figshare altmetric Items API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an item by UUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.figshare.com/v2/core/items/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the DSpace object"
+              }
+            ]
+          },
+          "docs": "Returns a single repository item. Anonymous access is governed by the item's access policies; restricted items return 401/403."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

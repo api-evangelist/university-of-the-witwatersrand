@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "30ee8fae-f8d8-48cf-8f30-3003b1ed4691",
+      "name": "Request",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b77c5ca-9585-478d-b975-4cbf9b0d65f5",
+          "name": "OAI-PMH request endpoint",
+          "request": {
+            "name": "OAI-PMH request endpoint",
+            "description": {
+              "content": "Single OAI-PMH entry point. The `verb` parameter selects the operation. Supported verbs are Identify, ListMetadataFormats, ListSets, ListIdentifiers, ListRecords, and GetRecord. Selective harvesting parameters (from, until, set, metadataPrefix, identifier, resumptionToken) apply per verb as defined by the OAI-PMH 2.0 protocol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "request"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "verb",
+                  "value": "<string>",
+                  "description": "(Required) The OAI-PMH verb (operation) to perform."
+                },
+                {
+                  "disabled": false,
+                  "key": "identifier",
+                  "value": "<string>",
+                  "description": "OAI identifier of a record (required for GetRecord; optional for ListMetadataFormats)."
+                },
+                {
+                  "disabled": false,
+                  "key": "metadataPrefix",
+                  "value": "<string>",
+                  "description": "Metadata format prefix (e.g. oai_dc). Required for GetRecord, ListRecords, ListIdentifiers."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Lower bound for selective harvesting by datestamp (UTC)."
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<string>",
+                  "description": "Upper bound for selective harvesting by datestamp (UTC)."
+                },
+                {
+                  "disabled": false,
+                  "key": "set",
+                  "value": "<string>",
+                  "description": "Set spec for selective harvesting by set membership."
+                },
+                {
+                  "disabled": false,
+                  "key": "resumptionToken",
+                  "value": "<string>",
+                  "description": "Flow-control token returned in a previous incomplete list response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "075173c7-5cfb-4c77-9237-bc5c5571cca5",
+              "name": "An OAI-PMH 2.0 XML response document. The root element is OAI-PMH, containing responseDate, request, and either a verb-specific payload element or an error element.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "verb",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier",
+                      "value": "oai:wiredspace.wits.ac.za:10539/38213"
+                    },
+                    {
+                      "key": "metadataPrefix",
+                      "value": "oai_dc"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2025-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "until",
+                      "value": "2025-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "set",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resumptionToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.figshare.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7e49c674-6232-4ff0-967f-c58a06d61da5",
+    "name": "Figshare altmetric Request API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Figshare API v2 - Full REST API documentation for managing articles, collections, projects and more. Saved for the University of the Witwatersrand Open Data Vault, which is hosted on the Figshare platform; datasets are accessible programmatically via this public API.\n\nContact Support:\n Name: Figshare Support",
+      "type": "text/plain"
+    }
+  }
+}

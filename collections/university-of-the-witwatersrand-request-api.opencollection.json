@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Figshare altmetric Request API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OAI-PMH request endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.figshare.com/v2/request",
+            "params": [
+              {
+                "name": "verb",
+                "value": "",
+                "type": "query",
+                "description": "The OAI-PMH verb (operation) to perform."
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "query",
+                "description": "OAI identifier of a record (required for GetRecord; optional for ListMetadataFormats)."
+              },
+              {
+                "name": "metadataPrefix",
+                "value": "",
+                "type": "query",
+                "description": "Metadata format prefix (e.g. oai_dc). Required for GetRecord, ListRecords, ListIdentifiers."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound for selective harvesting by datestamp (UTC)."
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound for selective harvesting by datestamp (UTC)."
+              },
+              {
+                "name": "set",
+                "value": "",
+                "type": "query",
+                "description": "Set spec for selective harvesting by set membership."
+              },
+              {
+                "name": "resumptionToken",
+                "value": "",
+                "type": "query",
+                "description": "Flow-control token returned in a previous incomplete list response."
+              }
+            ]
+          },
+          "docs": "Single OAI-PMH entry point. The `verb` parameter selects the operation. Supported verbs are Identify, ListMetadataFormats, ListSets, ListIdentifiers, ListRecords, and GetRecord. Selective harvesting parameters (from, until, set, metadataPrefix, identifier, resumptionToken) apply per verb as defined by the OAI-PMH 2.0 protocol."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

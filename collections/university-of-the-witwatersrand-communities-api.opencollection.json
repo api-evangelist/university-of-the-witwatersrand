@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Figshare altmetric Communities API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Communities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List communities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.figshare.com/v2/core/communities",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page size"
+              }
+            ]
+          },
+          "docs": "Returns a paginated HAL collection of top-level communities."
+        },
+        {
+          "info": {
+            "name": "Get a community by UUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.figshare.com/v2/core/communities/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the DSpace object"
+              }
+            ]
+          },
+          "docs": "Get a community by UUID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

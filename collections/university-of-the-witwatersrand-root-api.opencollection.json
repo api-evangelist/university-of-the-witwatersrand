@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Figshare altmetric Root API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Root",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API root document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.figshare.com/v2/"
+          },
+          "docs": "Returns the DSpace HAL/JSON root document, including dspaceVersion, dspaceName, and an _links map of all available endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

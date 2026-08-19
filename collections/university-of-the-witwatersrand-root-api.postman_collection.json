@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "7caa1e55-6ae0-4797-b413-ffc2f59bf5e9",
+      "name": "Root",
+      "description": {
+        "content": "HAL/JSON API root document",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b42ecb16-ebe8-4236-aeb1-3bb4b03313a1",
+          "name": "API root document",
+          "request": {
+            "name": "API root document",
+            "description": {
+              "content": "Returns the DSpace HAL/JSON root document, including dspaceVersion, dspaceName, and an _links map of all available endpoints.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53ec2ca8-f61d-43a3-8e84-02aad2c94e36",
+              "name": "HAL/JSON root document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"dspaceUI\": \"https://wiredspace.wits.ac.za\",\n  \"dspaceName\": \"WIReDSpace\",\n  \"dspaceServer\": \"https://wiredspace.wits.ac.za/server\",\n  \"dspaceVersion\": \"DSpace 9.2\",\n  \"type\": \"root\",\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"http://SsIDPkYYqmrANGraXCwmHXgZ.ytsf1WJvJL+gciK.nPhAKbCvP5l7ZeecYV+OaOCydaqQ0nrPLvOhVaSqKlIv3LCiLvqTGGs8IS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.figshare.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f3f964b4-b28d-4236-8473-2c5fac69705b",
+    "name": "Figshare altmetric Root API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Figshare API v2 - Full REST API documentation for managing articles, collections, projects and more. Saved for the University of the Witwatersrand Open Data Vault, which is hosted on the Figshare platform; datasets are accessible programmatically via this public API.\n\nContact Support:\n Name: Figshare Support",
+      "type": "text/plain"
+    }
+  }
+}

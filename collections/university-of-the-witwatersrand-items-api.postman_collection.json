@@ -1,0 +1,200 @@
+{
+  "item": [
+    {
+      "id": "3ea58551-4f1f-4e24-8e53-7adb43eb45b5",
+      "name": "Items",
+      "description": {
+        "content": "Repository items (records)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75202d08-2804-471e-90ca-37707ad77c9d",
+          "name": "Get an item by UUID",
+          "request": {
+            "name": "Get an item by UUID",
+            "description": {
+              "content": "Returns a single repository item. Anonymous access is governed by the item's access policies; restricted items return 401/403.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "core",
+                "items",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) The UUID of the DSpace object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2e1ced8-fb4e-473c-8649-a4ace44ed80d",
+              "name": "A single item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "items",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the DSpace object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"734a8908-e034-efbe-563d-09595c925c82\",\n  \"uuid\": \"98d4abe7-480d-ea63-b6b1-60be6f86d6ad\",\n  \"name\": \"string\",\n  \"handle\": \"string\",\n  \"metadata\": {\n    \"key_0\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 5035,\n        \"place\": 2993\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 3716,\n        \"place\": 2015\n      }\n    ],\n    \"key_1\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 1785,\n        \"place\": 6128\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 5863,\n        \"place\": 5926\n      }\n    ],\n    \"key_2\": [\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 3661,\n        \"place\": 5623\n      },\n      {\n        \"value\": \"string\",\n        \"language\": \"string\",\n        \"authority\": \"string\",\n        \"confidence\": 6361,\n        \"place\": 3997\n      }\n    ]\n  },\n  \"type\": \"string\",\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"http://UTpxGTTbIRRyatqQHtPBgkI.glPMSJcPCq0dYuN50fkSy,gMek-r-IFduS4N+NkHAI9coZjMMVpPeMfaRiC6ifJqx\"\n    },\n    \"key_1\": {\n      \"href\": \"http://LqLLQWtKUqEffKOv.elcrpVPhaxiDCcpsDYb8z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8b34377-20fd-4a36-bfaf-52b315e0bc24",
+              "name": "Authentication required for this item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "items",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the DSpace object"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61ca71c2-294e-4c80-b13e-2194996160ab",
+              "name": "Item not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "core",
+                    "items",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the DSpace object"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.figshare.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d8d39537-f40d-41e3-8ed4-5448da8ec4e4",
+    "name": "Figshare altmetric Items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Figshare API v2 - Full REST API documentation for managing articles, collections, projects and more. Saved for the University of the Witwatersrand Open Data Vault, which is hosted on the Figshare platform; datasets are accessible programmatically via this public API.\n\nContact Support:\n Name: Figshare Support",
+      "type": "text/plain"
+    }
+  }
+}
