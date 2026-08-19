@@ -42,7 +42,7 @@ tags:
   - Africa
 created: '2026-06-03'
 modified: '2026-06-03'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: university-of-the-witwatersrand:university-of-the-witwatersrand-altmetric-api
   name: University of the Witwatersrand altmetric API
