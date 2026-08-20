@@ -80,6 +80,8 @@ apis:
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
   tags:
+  - Articles
+  tags_raw:
   - articles
   properties:
   - type: OpenAPI
@@ -110,6 +112,8 @@ apis:
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
   tags:
+  - Authors
+  tags_raw:
   - authors
   properties:
   - type: OpenAPI
@@ -141,6 +145,8 @@ apis:
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
   tags:
+  - Collection
+  tags_raw:
   - collections
   properties:
   - type: OpenAPI
@@ -262,6 +268,8 @@ apis:
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -292,6 +300,8 @@ apis:
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
   tags:
+  - Authentication
+  tags_raw:
   - oauth
   properties:
   - type: OpenAPI
@@ -321,7 +331,8 @@ apis:
   description: The other API from University of the Witwatersrand — 7 operation(s) for other.
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
-  tags:
+  tags: []
+  tags_raw:
   - other
   properties:
   - type: OpenAPI
@@ -352,6 +363,8 @@ apis:
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
   tags:
+  - Profiles
+  tags_raw:
   - profiles
   properties:
   - type: OpenAPI
@@ -382,6 +395,8 @@ apis:
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
   tags:
+  - Project
+  tags_raw:
   - projects
   properties:
   - type: OpenAPI
