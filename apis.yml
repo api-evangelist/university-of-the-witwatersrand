@@ -524,6 +524,9 @@ apis:
   - type: x-example
     url: examples/university-of-the-witwatersrand-getArticle-example.json
 common:
+  - type: CapabilityMap
+    url: capabilities/university-of-the-witwatersrand-capability-edges.yml
+    name: University of the Witwatersrand Business Capability Map
   - type: AgenticAccess
     url: agentic-access/university-of-the-witwatersrand-agentic-access.yml
   - type: DomainSecurity
