@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Figshare altmetric institutions API
+  title: Figshare Institutions API
   description: Figshare API v2 - Full REST API documentation for managing articles, collections, projects and more. Saved for the University of the Witwatersrand Open Data Vault, which is hosted on the Figshare platform; datasets are accessible programmatically via this public API.
   version: '2.0'
   contact:
@@ -1115,6 +1115,219 @@ paths:
         - all
 components:
   schemas:
+    AccountGroupRoles:
+      type: object
+      example:
+        '2':
+        - category: group
+          id: 7
+          name: User
+      x-tag: institutions
+    Curation:
+      required:
+      - account_id
+      - article_id
+      - assigned_to
+      - comments_count
+      - created_date
+      - group_id
+      - id
+      - modified_date
+      - request_number
+      - resolution_comment
+      - status
+      - version
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The review id
+        group_id:
+          type: integer
+          description: The group in which the article is present.
+        account_id:
+          type: integer
+          description: The ID of the account of the owner of the article of this review.
+        assigned_to:
+          type: integer
+          description: The ID of the account to which this review is assigned.
+        article_id:
+          type: integer
+          description: The ID of the article of this review.
+        version:
+          type: integer
+          description: The Version number of the article in review.
+        comments_count:
+          type: integer
+          description: The number of comments in the review.
+        status:
+          type: string
+          description: The status of the review.
+          enum:
+          - pending
+          - approved
+          - rejected
+          - closed
+        created_date:
+          type: string
+          description: The creation date of the review.
+        modified_date:
+          type: string
+          description: The date the review has been modified.
+        request_number:
+          type: integer
+          description: The request number of the review.
+        resolution_comment:
+          type: string
+          description: The resolution comment of the review.
+      x-tag: institutions
+    Author:
+      required:
+      - first_name
+      - full_name
+      - id
+      - is_active
+      - last_name
+      - orcid_id
+      - url_name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Author id
+          example: 97657
+        full_name:
+          type: string
+          description: Author full name
+          example: John Doe
+        first_name:
+          type: string
+          description: Author first name
+          example: John
+        last_name:
+          type: string
+          description: Author last name
+          example: Doe
+        is_active:
+          type: boolean
+          description: True if author has published items
+          example: false
+        url_name:
+          type: string
+          description: Author url name
+          example: John_Doe
+        orcid_id:
+          type: string
+          description: Author Orcid
+          example: 1234-5678-9123-1234
+      x-tag: authors
+    AccountUpdate:
+      required:
+      - is_active
+      - group_id
+      type: object
+      properties:
+        group_id:
+          type: integer
+          description: Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups
+        is_active:
+          type: boolean
+          description: Is account active
+      x-tag: institutions
+    CustomArticleField:
+      required:
+      - field_type
+      - is_mandatory
+      - name
+      - order
+      - settings
+      - value
+      type: object
+      properties:
+        name:
+          type: string
+          description: Custom  metadata name
+          example: key
+        value:
+          type: object
+          description: Custom metadata value (can be either a string or an array of strings)
+          example: value
+        field_type:
+          type: string
+          description: Custom field type
+          example: textarea
+          enum:
+          - text
+          - textarea
+          - dropdown
+          - url
+          - email
+          - date
+          - dropdown_large_list
+        settings:
+          type: object
+          properties: {}
+          description: Settings for the custom field
+          example:
+            validations:
+              min_length: 1
+              max_length: 1000
+            placeholder: Enter your custom field here
+        order:
+          type: integer
+          description: Order of the custom field
+          example: 1
+        is_mandatory:
+          type: boolean
+          description: Whether the field is mandatory or not
+          example: false
+      x-tag: articles
+    InstitutionAccountsSearch:
+      type: object
+      properties:
+        search_for:
+          type: string
+          description: Search term
+          example: figshare
+        is_active:
+          maximum: 1
+          minimum: 0
+          type: integer
+          description: Filter by active status
+        page:
+          maximum: 5000
+          minimum: 1
+          type: integer
+          description: Page number. Used for pagination with page_size
+          example: 1
+        page_size:
+          maximum: 1000
+          minimum: 1
+          type: integer
+          description: The number of results included on a page. Used for pagination with page
+          example: 10
+          default: 10
+        limit:
+          maximum: 1000
+          minimum: 1
+          type: integer
+          description: Number of results included on a page. Used for pagination with query
+          example: 10
+        offset:
+          maximum: 5000
+          minimum: 0
+          type: integer
+          description: Where to start the listing (the offset of the first result). Used for pagination with limit
+          example: 0
+        institution_user_id:
+          type: string
+          description: filter by institution_user_id
+          example: alan
+        email:
+          type: string
+          description: filter by email
+          example: alan@institution.com
+      x-tag: institutions
     Category:
       required:
       - id
@@ -1149,6 +1362,791 @@ components:
           type: integer
           description: Internal id of taxonomy the category is part of
           example: 4
+      x-tag: common
+    AccountCreateResponse:
+      required:
+      - account_id
+      type: object
+      properties:
+        account_id:
+          type: integer
+          description: ID of created account
+          example: 33334444
+      x-tag: common
+    ShortAccount:
+      required:
+      - active
+      - email
+      - first_name
+      - id
+      - institution_id
+      - institution_user_id
+      - last_name
+      - orcid_id
+      - quota
+      - symplectic_user_id
+      - used_quota
+      - user_id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Account id
+          example: 1495682
+        first_name:
+          type: string
+          description: First Name
+          example: Doe
+        last_name:
+          type: string
+          description: Last Name
+          example: John
+        institution_id:
+          type: integer
+          description: Account institution
+          example: 1
+        email:
+          type: string
+          description: User email
+          example: user@domain.com
+        active:
+          type: integer
+          description: Account activity status
+          example: 0
+        institution_user_id:
+          type: string
+          description: Account institution user id
+          example: '1'
+        quota:
+          type: integer
+          description: Total storage available to account, in bytes
+          example: 1074000000
+        used_quota:
+          type: integer
+          description: Storage used by the account, in bytes
+          example: 1074000000
+        user_id:
+          type: integer
+          description: User id associated with account, useful for example for adding the account as an author to an item
+          example: 1000001
+        orcid_id:
+          type: string
+          description: ORCID iD associated to account
+          example: 0000-0001-2345-6789
+        symplectic_user_id:
+          type: string
+          description: Symplectic ID associated to account
+          example: djohn42
+      x-tag: other
+    Timeline:
+      allOf:
+      - $ref: '#/components/schemas/TimelineUpdate'
+      x-tag: timeline
+    Group:
+      required:
+      - association_criteria
+      - id
+      - name
+      - parent_id
+      - resource_id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Group id
+          example: 1
+        name:
+          type: string
+          description: Group name
+          example: Materials
+        resource_id:
+          type: string
+          description: Group resource id
+          example: ''
+        parent_id:
+          type: integer
+          description: Parent group if any
+          example: 0
+        association_criteria:
+          type: string
+          description: HR code associated with group, if code exists
+          example: IT
+      x-tag: institutions
+    License:
+      required:
+      - name
+      - url
+      - value
+      type: object
+      properties:
+        value:
+          type: integer
+          description: License value
+          example: 1
+        name:
+          type: string
+          description: License name
+          example: CC BY
+        url:
+          type: string
+          description: License url
+          format: url
+          example: http://creativecommons.org/licenses/by/4.0/
+      x-tag: institutions
+    Institution:
+      required:
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Institution id
+          example: 0
+        name:
+          type: string
+          description: Institution name
+          example: Institution
+      x-tag: institutions
+    ShortCustomField:
+      required:
+      - field_type
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Custom field id
+          example: 365
+        name:
+          type: string
+          description: Custom field name
+          example: my custom field
+        field_type:
+          type: string
+          description: Custom field type
+          example: textarea
+          enum:
+          - text
+          - textarea
+          - dropdown
+          - url
+          - email
+          - date
+          - dropdown_large_list
+        settings:
+          type: object
+          properties: {}
+          description: Settings for the custom field
+          example:
+            validations:
+              min_length: 1
+              max_length: 1000
+            placeholder: Enter your custom field here
+        order:
+          type: integer
+          description: Order of the field in the group
+          example: 1
+        is_mandatory:
+          type: boolean
+          description: Whether the field is mandatory or not
+          example: false
+      x-tag: institutions
+    RelatedMaterial:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the related material; can be used to add existing materials of the same account to items.
+          example: 10432
+        identifier:
+          type: string
+          description: The related material identifier (e.g., DOI, Handle, ISBN). Mandatory if creating a new material.
+          example: 10.6084/m9.figshare.1407024
+        title:
+          type: string
+          description: The related material title
+          example: 'Rooter: A Methodology for the Typical Unification of Access Points and Redundancy'
+        relation:
+          type: string
+          description: The relation between the item and the related material; defaults to 'References'. Mandatory if creating a new material.
+          example: IsSupplementTo
+          default: References
+          enum:
+          - IsCitedBy
+          - Cites
+          - IsSupplementTo
+          - IsSupplementedBy
+          - IsContinuedBy
+          - Continues
+          - Describes
+          - IsDescribedBy
+          - HasMetadata
+          - IsMetadataFor
+          - HasVersion
+          - IsVersionOf
+          - IsNewVersionOf
+          - IsPreviousVersionOf
+          - IsPartOf
+          - HasPart
+          - IsPublishedIn
+          - IsReferencedBy
+          - References
+          - IsDocumentedBy
+          - Documents
+          - IsCompiledBy
+          - Compiles
+          - IsVariantFormOf
+          - IsOriginalFormOf
+          - IsIdenticalTo
+          - IsReviewedBy
+          - Reviews
+          - IsDerivedFrom
+          - IsSourceOf
+          - IsRequiredBy
+          - Requires
+          - IsObsoletedBy
+          - Obsoletes
+        identifier_type:
+          type: string
+          description: The type of the identifier of the related material; defaults to 'URL'. Mandatory if creating a new material.
+          example: DOI
+          default: URL
+          enum:
+          - ARK
+          - arXiv
+          - bibcode
+          - DOI
+          - EAN13
+          - EISSN
+          - Handle
+          - IGSN
+          - ISBN
+          - ISSN
+          - ISTC
+          - LISSN
+          - LSID
+          - PMID
+          - PURL
+          - UPC
+          - URL
+          - URN
+          - w3id
+        is_linkout:
+          type: boolean
+          description: Flag for highlighting this related material in the call-out box
+          example: true
+        link:
+          type: string
+          description: The full hyperlink for the identifier. Automatically generated by Figshare.
+          readOnly: true
+          example: https://doi.org/10.6084/m9.figshare.1407024
+    ResponseMessage:
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          description: Response message text
+          example: Project 1 has been published
+      x-tag: common
+    CurationCommentCreate:
+      required:
+      - text
+      type: object
+      properties:
+        text:
+          maxLength: 2000
+          minLength: 1
+          type: string
+          description: The contents/value of the comment
+      x-tag: institutions
+    AccountCreate:
+      required:
+      - last_name
+      - email
+      type: object
+      properties:
+        email:
+          maxLength: 150
+          minLength: 3
+          type: string
+          description: Email of account
+          example: johndoe@example.com
+        first_name:
+          maxLength: 255
+          type: string
+          description: First Name
+          example: John
+          default: ''
+        last_name:
+          maxLength: 255
+          type: string
+          description: Last Name
+          example: Doe
+          default: ''
+        group_id:
+          type: integer
+          description: Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups
+        institution_user_id:
+          maxLength: 50
+          type: string
+          description: Institution user id
+          example: johndoe
+          default: ''
+        symplectic_user_id:
+          maxLength: 50
+          type: string
+          description: Symplectic user id
+          example: johndoe
+          default: ''
+        quota:
+          type: integer
+          description: Account quota
+          example: 1000
+        is_active:
+          type: boolean
+          description: Is account active
+      x-tag: institutions
+      x-maxCombinedLength:
+        description: The combined length of first_name and last_name must not exceed 255 characters.
+    Role:
+      required:
+      - category
+      - description
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Role id
+          example: 1
+        name:
+          type: string
+          description: Role name
+          example: Curator
+        category:
+          type: string
+          description: Role category
+          example: group
+        description:
+          type: string
+          description: Role description
+      x-tag: institutions
+    FundingInformation:
+      required:
+      - funder_name
+      - grant_code
+      - id
+      - is_user_defined
+      - title
+      - url
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Funding id
+          example: 1
+        title:
+          type: string
+          description: The funding name
+          example: Scholarly funding
+        grant_code:
+          type: string
+          description: The grant code
+        funder_name:
+          type: string
+          description: Funder's name
+        is_user_defined:
+          type: integer
+          description: Return 1 whether the grant has been introduced manually, 0 otherwise
+        url:
+          type: string
+          description: The grant url
+          format: url
+          example: https://app.dimensions.ai/details/grant/1
+      x-tag: funding
+    User:
+      required:
+      - first_name
+      - id
+      - is_active
+      - is_public
+      - job_title
+      - last_name
+      - name
+      - orcid_id
+      - url_name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: User id
+          example: 1495682
+        first_name:
+          type: string
+          description: First Name
+          example: Doe
+        last_name:
+          type: string
+          description: Last Name
+          example: John
+        name:
+          type: string
+          description: Full Name
+          example: John Doe
+        is_active:
+          type: boolean
+          description: Account activity status
+          example: true
+        url_name:
+          type: string
+          description: Name that appears in website url
+          example: John_Doe
+        is_public:
+          type: boolean
+          description: Account public status
+          example: true
+        job_title:
+          type: string
+          description: User Job title
+          example: programmer
+        orcid_id:
+          type: string
+          description: Orcid associated to this User
+          example: 1234-5678-9123-1234
+      x-tag: other
+    Article:
+      required:
+      - created_date
+      - defined_type
+      - defined_type_name
+      - doi
+      - handle
+      - id
+      - resource_doi
+      - resource_title
+      - thumb
+      - timeline
+      - title
+      - url
+      - url_private_api
+      - url_private_html
+      - url_public_api
+      - url_public_html
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for article
+          example: 1434614
+        title:
+          type: string
+          description: Title of article
+          example: Test article title
+        doi:
+          type: string
+          description: DOI
+          example: 10.6084/m9.figshare.1434614
+        handle:
+          type: string
+          description: Handle
+          example: 111184/figshare.1234
+        url:
+          type: string
+          description: Api endpoint for article
+          format: url
+          example: http://api.figshare.com/articles/1434614
+        url_public_html:
+          type: string
+          description: Public site endpoint for article
+          format: url
+          example: https://figshare.com/articles/media/Test_article_title/1434614
+        url_public_api:
+          type: string
+          description: Public Api endpoint for article
+          format: url
+          example: https://api.figshare.com/articles/1434614
+        url_private_html:
+          type: string
+          description: Private site endpoint for article
+          format: url
+          example: https://figshare.com/account/articles/1434614
+        url_private_api:
+          type: string
+          description: Private Api endpoint for article
+          format: url
+          example: https://api.figshare.com/account/articles/1434614
+        timeline:
+          $ref: '#/components/schemas/Timeline'
+        thumb:
+          type: string
+          description: Thumbnail image
+          format: url
+          example: https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png
+        defined_type:
+          type: integer
+          description: Type of article identifier
+          example: 3
+        defined_type_name:
+          type: string
+          description: Name of the article type identifier
+          example: media
+        resource_doi:
+          type: string
+          description: Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article DOI.
+          default: ''
+        resource_title:
+          type: string
+          description: Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.
+          default: ''
+        created_date:
+          type: string
+          description: Date when article was created
+          example: '2017-05-18T11:49:03Z'
+      x-tag: articles
+    AccountGroupRolesCreate:
+      type: object
+      example:
+        '2':
+        - 2
+        - 7
+        '3':
+        - 7
+        - 9
+      x-tag: institutions
+    TimelineUpdate:
+      type: object
+      properties:
+        firstOnline:
+          type: string
+          description: Online posted date
+          example: '2015-12-31'
+        publisherPublication:
+          type: string
+          description: Publish date
+          example: '2015-12-31'
+        publisherAcceptance:
+          type: string
+          description: Date when the item was accepted for publication
+          example: '2015-12-31'
+      x-tag: timeline_update
+    Account:
+      required:
+      - active
+      - created_date
+      - email
+      - first_name
+      - group_id
+      - id
+      - institution_id
+      - institution_user_id
+      - last_name
+      - maximum_file_size
+      - modified_date
+      - orcid_id
+      - pending_quota_request
+      - quota
+      - symplectic_user_id
+      - used_quota
+      - used_quota_private
+      - used_quota_public
+      - user_id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Account id
+          example: 1495682
+        first_name:
+          type: string
+          description: First Name
+          example: Doe
+        last_name:
+          type: string
+          description: Last Name
+          example: John
+        used_quota_private:
+          type: integer
+          description: Account used private quota
+          example: 0
+        modified_date:
+          type: string
+          description: Date of last account modification
+          example: '2018-05-22T04:04:04'
+        used_quota:
+          type: integer
+          description: Account total used quota
+          example: 0
+        created_date:
+          type: string
+          description: Date when account was created
+          example: '2018-05-22T04:04:04'
+        quota:
+          type: integer
+          description: Account quota
+          example: 0
+        group_id:
+          type: integer
+          description: Account group id
+          example: 0
+        institution_user_id:
+          type: string
+          description: Account institution user id
+          example: djohn42
+        institution_id:
+          type: integer
+          description: Account institution
+          example: 1
+        email:
+          type: string
+          description: User email
+          example: user@domain.com
+        used_quota_public:
+          type: integer
+          description: Account public used quota
+          example: 0
+        pending_quota_request:
+          type: boolean
+          description: True if a quota request is pending
+          example: true
+        active:
+          type: integer
+          description: Account activity status
+          example: 0
+        maximum_file_size:
+          type: integer
+          description: Maximum upload size for account
+          example: 0
+        user_id:
+          type: integer
+          description: User id associated with account, useful for example for adding the account as an author to an item
+          example: 1000001
+        orcid_id:
+          type: string
+          description: ORCID iD associated to account
+          example: 0000-0001-2345-6789
+        symplectic_user_id:
+          type: string
+          description: Symplectic ID associated to account
+          example: djohn42
+      x-tag: other
+    CurationComment:
+      required:
+      - account_id
+      - created_date
+      - id
+      - modified_date
+      - text
+      - type
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the comment.
+        account_id:
+          type: integer
+          description: The ID of the account which generated this comment.
+        type:
+          type: string
+          description: The ID of the account which generated this comment.
+          enum:
+          - comment
+          - approved
+          - rejected
+          - closed
+        text:
+          type: string
+          description: The value/content of the comment.
+        created_date:
+          type: string
+          description: The creation date of the comment.
+        modified_date:
+          type: string
+          description: The date the comment has been modified.
+      x-tag: institutions
+    CurationDetail:
+      required:
+      - item
+      properties:
+        item:
+          $ref: '#/components/schemas/ArticleComplete'
+      allOf:
+      - $ref: '#/components/schemas/Curation'
+      x-tag: institutions
+    ErrorMessage:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: A machine friendly error code, used by the dev team to identify the error.
+        message:
+          type: string
+          description: A human friendly message explaining the error.
+      x-tag: common
+    CategoryList:
+      required:
+      - has_children
+      - is_selectable
+      properties:
+        is_selectable:
+          type: boolean
+          description: The selectable status
+          example: true
+        has_children:
+          type: boolean
+          description: True if category has children
+          example: false
+      allOf:
+      - $ref: '#/components/schemas/Category'
+      x-tag: common
+    PublicFile:
+      required:
+      - computed_md5
+      - download_url
+      - id
+      - is_link_only
+      - name
+      - size
+      - supplied_md5
+      type: object
+      properties:
+        id:
+          type: integer
+          description: File id
+          example: 3000002
+        name:
+          type: string
+          description: File name
+          example: test.xls
+        size:
+          type: integer
+          description: File size
+          example: 14848
+        is_link_only:
+          type: boolean
+          description: True if file is hosted somewhere else
+          example: false
+        download_url:
+          type: string
+          description: Url for file download
+          format: url
+          example: https://ndownloader.figshare.com/files/3000002
+        supplied_md5:
+          type: string
+          description: File supplied md5
+          example: 043a51806d646e88cafbf19e7b82846f
+        computed_md5:
+          type: string
+          description: File computed md5
+          example: 043a51806d646e88cafbf19e7b82846f
+        mimetype:
+          type: string
+          description: MIME Type of the file, it defaults to an empty string
+          example: application/pdf
       x-tag: common
     ProjectArticle:
       required:
@@ -1293,608 +2291,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/Article'
       x-tag: articles
-    AccountGroupRoles:
-      type: object
-      example:
-        '2':
-        - category: group
-          id: 7
-          name: User
-      x-tag: institutions
-    RelatedMaterial:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The ID of the related material; can be used to add existing materials of the same account to items.
-          example: 10432
-        identifier:
-          type: string
-          description: The related material identifier (e.g., DOI, Handle, ISBN). Mandatory if creating a new material.
-          example: 10.6084/m9.figshare.1407024
-        title:
-          type: string
-          description: The related material title
-          example: 'Rooter: A Methodology for the Typical Unification of Access Points and Redundancy'
-        relation:
-          type: string
-          description: The relation between the item and the related material; defaults to 'References'. Mandatory if creating a new material.
-          example: IsSupplementTo
-          default: References
-          enum:
-          - IsCitedBy
-          - Cites
-          - IsSupplementTo
-          - IsSupplementedBy
-          - IsContinuedBy
-          - Continues
-          - Describes
-          - IsDescribedBy
-          - HasMetadata
-          - IsMetadataFor
-          - HasVersion
-          - IsVersionOf
-          - IsNewVersionOf
-          - IsPreviousVersionOf
-          - IsPartOf
-          - HasPart
-          - IsPublishedIn
-          - IsReferencedBy
-          - References
-          - IsDocumentedBy
-          - Documents
-          - IsCompiledBy
-          - Compiles
-          - IsVariantFormOf
-          - IsOriginalFormOf
-          - IsIdenticalTo
-          - IsReviewedBy
-          - Reviews
-          - IsDerivedFrom
-          - IsSourceOf
-          - IsRequiredBy
-          - Requires
-          - IsObsoletedBy
-          - Obsoletes
-        identifier_type:
-          type: string
-          description: The type of the identifier of the related material; defaults to 'URL'. Mandatory if creating a new material.
-          example: DOI
-          default: URL
-          enum:
-          - ARK
-          - arXiv
-          - bibcode
-          - DOI
-          - EAN13
-          - EISSN
-          - Handle
-          - IGSN
-          - ISBN
-          - ISSN
-          - ISTC
-          - LISSN
-          - LSID
-          - PMID
-          - PURL
-          - UPC
-          - URL
-          - URN
-          - w3id
-        is_linkout:
-          type: boolean
-          description: Flag for highlighting this related material in the call-out box
-          example: true
-        link:
-          type: string
-          description: The full hyperlink for the identifier. Automatically generated by Figshare.
-          readOnly: true
-          example: https://doi.org/10.6084/m9.figshare.1407024
-    Timeline:
-      allOf:
-      - $ref: '#/components/schemas/TimelineUpdate'
-      x-tag: timeline
-    Institution:
-      required:
-      - id
-      - name
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Institution id
-          example: 0
-        name:
-          type: string
-          description: Institution name
-          example: Institution
-      x-tag: institutions
-    TimelineUpdate:
-      type: object
-      properties:
-        firstOnline:
-          type: string
-          description: Online posted date
-          example: '2015-12-31'
-        publisherPublication:
-          type: string
-          description: Publish date
-          example: '2015-12-31'
-        publisherAcceptance:
-          type: string
-          description: Date when the item was accepted for publication
-          example: '2015-12-31'
-      x-tag: timeline_update
-    Group:
-      required:
-      - association_criteria
-      - id
-      - name
-      - parent_id
-      - resource_id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Group id
-          example: 1
-        name:
-          type: string
-          description: Group name
-          example: Materials
-        resource_id:
-          type: string
-          description: Group resource id
-          example: ''
-        parent_id:
-          type: integer
-          description: Parent group if any
-          example: 0
-        association_criteria:
-          type: string
-          description: HR code associated with group, if code exists
-          example: IT
-      x-tag: institutions
-    CategoryList:
-      required:
-      - has_children
-      - is_selectable
-      properties:
-        is_selectable:
-          type: boolean
-          description: The selectable status
-          example: true
-        has_children:
-          type: boolean
-          description: True if category has children
-          example: false
-      allOf:
-      - $ref: '#/components/schemas/Category'
-      x-tag: common
-    AccountGroupRolesCreate:
-      type: object
-      example:
-        '2':
-        - 2
-        - 7
-        '3':
-        - 7
-        - 9
-      x-tag: institutions
-    AccountUpdate:
-      required:
-      - is_active
-      - group_id
-      type: object
-      properties:
-        group_id:
-          type: integer
-          description: Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups
-        is_active:
-          type: boolean
-          description: Is account active
-      x-tag: institutions
-    CustomArticleField:
-      required:
-      - field_type
-      - is_mandatory
-      - name
-      - order
-      - settings
-      - value
-      type: object
-      properties:
-        name:
-          type: string
-          description: Custom  metadata name
-          example: key
-        value:
-          type: object
-          description: Custom metadata value (can be either a string or an array of strings)
-          example: value
-        field_type:
-          type: string
-          description: Custom field type
-          example: textarea
-          enum:
-          - text
-          - textarea
-          - dropdown
-          - url
-          - email
-          - date
-          - dropdown_large_list
-        settings:
-          type: object
-          properties: {}
-          description: Settings for the custom field
-          example:
-            validations:
-              min_length: 1
-              max_length: 1000
-            placeholder: Enter your custom field here
-        order:
-          type: integer
-          description: Order of the custom field
-          example: 1
-        is_mandatory:
-          type: boolean
-          description: Whether the field is mandatory or not
-          example: false
-      x-tag: articles
-    PublicFile:
-      required:
-      - computed_md5
-      - download_url
-      - id
-      - is_link_only
-      - name
-      - size
-      - supplied_md5
-      type: object
-      properties:
-        id:
-          type: integer
-          description: File id
-          example: 3000002
-        name:
-          type: string
-          description: File name
-          example: test.xls
-        size:
-          type: integer
-          description: File size
-          example: 14848
-        is_link_only:
-          type: boolean
-          description: True if file is hosted somewhere else
-          example: false
-        download_url:
-          type: string
-          description: Url for file download
-          format: url
-          example: https://ndownloader.figshare.com/files/3000002
-        supplied_md5:
-          type: string
-          description: File supplied md5
-          example: 043a51806d646e88cafbf19e7b82846f
-        computed_md5:
-          type: string
-          description: File computed md5
-          example: 043a51806d646e88cafbf19e7b82846f
-        mimetype:
-          type: string
-          description: MIME Type of the file, it defaults to an empty string
-          example: application/pdf
-      x-tag: common
-    ResponseMessage:
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          description: Response message text
-          example: Project 1 has been published
-      x-tag: common
-    Article:
-      required:
-      - created_date
-      - defined_type
-      - defined_type_name
-      - doi
-      - handle
-      - id
-      - resource_doi
-      - resource_title
-      - thumb
-      - timeline
-      - title
-      - url
-      - url_private_api
-      - url_private_html
-      - url_public_api
-      - url_public_html
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Unique identifier for article
-          example: 1434614
-        title:
-          type: string
-          description: Title of article
-          example: Test article title
-        doi:
-          type: string
-          description: DOI
-          example: 10.6084/m9.figshare.1434614
-        handle:
-          type: string
-          description: Handle
-          example: 111184/figshare.1234
-        url:
-          type: string
-          description: Api endpoint for article
-          format: url
-          example: http://api.figshare.com/articles/1434614
-        url_public_html:
-          type: string
-          description: Public site endpoint for article
-          format: url
-          example: https://figshare.com/articles/media/Test_article_title/1434614
-        url_public_api:
-          type: string
-          description: Public Api endpoint for article
-          format: url
-          example: https://api.figshare.com/articles/1434614
-        url_private_html:
-          type: string
-          description: Private site endpoint for article
-          format: url
-          example: https://figshare.com/account/articles/1434614
-        url_private_api:
-          type: string
-          description: Private Api endpoint for article
-          format: url
-          example: https://api.figshare.com/account/articles/1434614
-        timeline:
-          $ref: '#/components/schemas/Timeline'
-        thumb:
-          type: string
-          description: Thumbnail image
-          format: url
-          example: https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png
-        defined_type:
-          type: integer
-          description: Type of article identifier
-          example: 3
-        defined_type_name:
-          type: string
-          description: Name of the article type identifier
-          example: media
-        resource_doi:
-          type: string
-          description: Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article DOI.
-          default: ''
-        resource_title:
-          type: string
-          description: Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.
-          default: ''
-        created_date:
-          type: string
-          description: Date when article was created
-          example: '2017-05-18T11:49:03Z'
-      x-tag: articles
-    AccountCreate:
-      required:
-      - last_name
-      - email
-      type: object
-      properties:
-        email:
-          maxLength: 150
-          minLength: 3
-          type: string
-          description: Email of account
-          example: johndoe@example.com
-        first_name:
-          maxLength: 255
-          type: string
-          description: First Name
-          example: John
-          default: ''
-        last_name:
-          maxLength: 255
-          type: string
-          description: Last Name
-          example: Doe
-          default: ''
-        group_id:
-          type: integer
-          description: Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups
-        institution_user_id:
-          maxLength: 50
-          type: string
-          description: Institution user id
-          example: johndoe
-          default: ''
-        symplectic_user_id:
-          maxLength: 50
-          type: string
-          description: Symplectic user id
-          example: johndoe
-          default: ''
-        quota:
-          type: integer
-          description: Account quota
-          example: 1000
-        is_active:
-          type: boolean
-          description: Is account active
-      x-tag: institutions
-      x-maxCombinedLength:
-        description: The combined length of first_name and last_name must not exceed 255 characters.
-    License:
-      required:
-      - name
-      - url
-      - value
-      type: object
-      properties:
-        value:
-          type: integer
-          description: License value
-          example: 1
-        name:
-          type: string
-          description: License name
-          example: CC BY
-        url:
-          type: string
-          description: License url
-          format: url
-          example: http://creativecommons.org/licenses/by/4.0/
-      x-tag: institutions
-    ErrorMessage:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: A machine friendly error code, used by the dev team to identify the error.
-        message:
-          type: string
-          description: A human friendly message explaining the error.
-      x-tag: common
-    ShortAccount:
-      required:
-      - active
-      - email
-      - first_name
-      - id
-      - institution_id
-      - institution_user_id
-      - last_name
-      - orcid_id
-      - quota
-      - symplectic_user_id
-      - used_quota
-      - user_id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Account id
-          example: 1495682
-        first_name:
-          type: string
-          description: First Name
-          example: Doe
-        last_name:
-          type: string
-          description: Last Name
-          example: John
-        institution_id:
-          type: integer
-          description: Account institution
-          example: 1
-        email:
-          type: string
-          description: User email
-          example: user@domain.com
-        active:
-          type: integer
-          description: Account activity status
-          example: 0
-        institution_user_id:
-          type: string
-          description: Account institution user id
-          example: '1'
-        quota:
-          type: integer
-          description: Total storage available to account, in bytes
-          example: 1074000000
-        used_quota:
-          type: integer
-          description: Storage used by the account, in bytes
-          example: 1074000000
-        user_id:
-          type: integer
-          description: User id associated with account, useful for example for adding the account as an author to an item
-          example: 1000001
-        orcid_id:
-          type: string
-          description: ORCID iD associated to account
-          example: 0000-0001-2345-6789
-        symplectic_user_id:
-          type: string
-          description: Symplectic ID associated to account
-          example: djohn42
-      x-tag: other
-    Author:
-      required:
-      - first_name
-      - full_name
-      - id
-      - is_active
-      - last_name
-      - orcid_id
-      - url_name
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Author id
-          example: 97657
-        full_name:
-          type: string
-          description: Author full name
-          example: John Doe
-        first_name:
-          type: string
-          description: Author first name
-          example: John
-        last_name:
-          type: string
-          description: Author last name
-          example: Doe
-        is_active:
-          type: boolean
-          description: True if author has published items
-          example: false
-        url_name:
-          type: string
-          description: Author url name
-          example: John_Doe
-        orcid_id:
-          type: string
-          description: Author Orcid
-          example: 1234-5678-9123-1234
-      x-tag: authors
-    GroupEmbargoOptions:
-      required:
-      - id
-      - ip_name
-      - type
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Embargo option id
-          example: 364
-        type:
-          type: string
-          description: Embargo permission type
-          example: ip_range
-          enum:
-          - logged_in
-          - ip_range
-          - administrator
-        ip_name:
-          type: string
-          description: IP range name; value appears if type is ip_range
-          example: Figshare IP range
-      x-tag: institutions
     ArticleComplete:
       required:
       - authors
@@ -1943,426 +2339,30 @@ components:
       allOf:
       - $ref: '#/components/schemas/ProjectArticle'
       x-tag: articles
-    CurationDetail:
+    GroupEmbargoOptions:
       required:
-      - item
-      properties:
-        item:
-          $ref: '#/components/schemas/ArticleComplete'
-      allOf:
-      - $ref: '#/components/schemas/Curation'
-      x-tag: institutions
-    CurationComment:
-      required:
-      - account_id
-      - created_date
       - id
-      - modified_date
-      - text
+      - ip_name
       - type
       type: object
       properties:
         id:
           type: integer
-          description: The ID of the comment.
-        account_id:
-          type: integer
-          description: The ID of the account which generated this comment.
+          description: Embargo option id
+          example: 364
         type:
           type: string
-          description: The ID of the account which generated this comment.
+          description: Embargo permission type
+          example: ip_range
           enum:
-          - comment
-          - approved
-          - rejected
-          - closed
-        text:
+          - logged_in
+          - ip_range
+          - administrator
+        ip_name:
           type: string
-          description: The value/content of the comment.
-        created_date:
-          type: string
-          description: The creation date of the comment.
-        modified_date:
-          type: string
-          description: The date the comment has been modified.
+          description: IP range name; value appears if type is ip_range
+          example: Figshare IP range
       x-tag: institutions
-    User:
-      required:
-      - first_name
-      - id
-      - is_active
-      - is_public
-      - job_title
-      - last_name
-      - name
-      - orcid_id
-      - url_name
-      type: object
-      properties:
-        id:
-          type: integer
-          description: User id
-          example: 1495682
-        first_name:
-          type: string
-          description: First Name
-          example: Doe
-        last_name:
-          type: string
-          description: Last Name
-          example: John
-        name:
-          type: string
-          description: Full Name
-          example: John Doe
-        is_active:
-          type: boolean
-          description: Account activity status
-          example: true
-        url_name:
-          type: string
-          description: Name that appears in website url
-          example: John_Doe
-        is_public:
-          type: boolean
-          description: Account public status
-          example: true
-        job_title:
-          type: string
-          description: User Job title
-          example: programmer
-        orcid_id:
-          type: string
-          description: Orcid associated to this User
-          example: 1234-5678-9123-1234
-      x-tag: other
-    Role:
-      required:
-      - category
-      - description
-      - id
-      - name
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Role id
-          example: 1
-        name:
-          type: string
-          description: Role name
-          example: Curator
-        category:
-          type: string
-          description: Role category
-          example: group
-        description:
-          type: string
-          description: Role description
-      x-tag: institutions
-    FundingInformation:
-      required:
-      - funder_name
-      - grant_code
-      - id
-      - is_user_defined
-      - title
-      - url
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Funding id
-          example: 1
-        title:
-          type: string
-          description: The funding name
-          example: Scholarly funding
-        grant_code:
-          type: string
-          description: The grant code
-        funder_name:
-          type: string
-          description: Funder's name
-        is_user_defined:
-          type: integer
-          description: Return 1 whether the grant has been introduced manually, 0 otherwise
-        url:
-          type: string
-          description: The grant url
-          format: url
-          example: https://app.dimensions.ai/details/grant/1
-      x-tag: funding
-    AccountCreateResponse:
-      required:
-      - account_id
-      type: object
-      properties:
-        account_id:
-          type: integer
-          description: ID of created account
-          example: 33334444
-      x-tag: common
-    ShortCustomField:
-      required:
-      - field_type
-      - id
-      - name
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Custom field id
-          example: 365
-        name:
-          type: string
-          description: Custom field name
-          example: my custom field
-        field_type:
-          type: string
-          description: Custom field type
-          example: textarea
-          enum:
-          - text
-          - textarea
-          - dropdown
-          - url
-          - email
-          - date
-          - dropdown_large_list
-        settings:
-          type: object
-          properties: {}
-          description: Settings for the custom field
-          example:
-            validations:
-              min_length: 1
-              max_length: 1000
-            placeholder: Enter your custom field here
-        order:
-          type: integer
-          description: Order of the field in the group
-          example: 1
-        is_mandatory:
-          type: boolean
-          description: Whether the field is mandatory or not
-          example: false
-      x-tag: institutions
-    Curation:
-      required:
-      - account_id
-      - article_id
-      - assigned_to
-      - comments_count
-      - created_date
-      - group_id
-      - id
-      - modified_date
-      - request_number
-      - resolution_comment
-      - status
-      - version
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The review id
-        group_id:
-          type: integer
-          description: The group in which the article is present.
-        account_id:
-          type: integer
-          description: The ID of the account of the owner of the article of this review.
-        assigned_to:
-          type: integer
-          description: The ID of the account to which this review is assigned.
-        article_id:
-          type: integer
-          description: The ID of the article of this review.
-        version:
-          type: integer
-          description: The Version number of the article in review.
-        comments_count:
-          type: integer
-          description: The number of comments in the review.
-        status:
-          type: string
-          description: The status of the review.
-          enum:
-          - pending
-          - approved
-          - rejected
-          - closed
-        created_date:
-          type: string
-          description: The creation date of the review.
-        modified_date:
-          type: string
-          description: The date the review has been modified.
-        request_number:
-          type: integer
-          description: The request number of the review.
-        resolution_comment:
-          type: string
-          description: The resolution comment of the review.
-      x-tag: institutions
-    InstitutionAccountsSearch:
-      type: object
-      properties:
-        search_for:
-          type: string
-          description: Search term
-          example: figshare
-        is_active:
-          maximum: 1
-          minimum: 0
-          type: integer
-          description: Filter by active status
-        page:
-          maximum: 5000
-          minimum: 1
-          type: integer
-          description: Page number. Used for pagination with page_size
-          example: 1
-        page_size:
-          maximum: 1000
-          minimum: 1
-          type: integer
-          description: The number of results included on a page. Used for pagination with page
-          example: 10
-          default: 10
-        limit:
-          maximum: 1000
-          minimum: 1
-          type: integer
-          description: Number of results included on a page. Used for pagination with query
-          example: 10
-        offset:
-          maximum: 5000
-          minimum: 0
-          type: integer
-          description: Where to start the listing (the offset of the first result). Used for pagination with limit
-          example: 0
-        institution_user_id:
-          type: string
-          description: filter by institution_user_id
-          example: alan
-        email:
-          type: string
-          description: filter by email
-          example: alan@institution.com
-      x-tag: institutions
-    CurationCommentCreate:
-      required:
-      - text
-      type: object
-      properties:
-        text:
-          maxLength: 2000
-          minLength: 1
-          type: string
-          description: The contents/value of the comment
-      x-tag: institutions
-    Account:
-      required:
-      - active
-      - created_date
-      - email
-      - first_name
-      - group_id
-      - id
-      - institution_id
-      - institution_user_id
-      - last_name
-      - maximum_file_size
-      - modified_date
-      - orcid_id
-      - pending_quota_request
-      - quota
-      - symplectic_user_id
-      - used_quota
-      - used_quota_private
-      - used_quota_public
-      - user_id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Account id
-          example: 1495682
-        first_name:
-          type: string
-          description: First Name
-          example: Doe
-        last_name:
-          type: string
-          description: Last Name
-          example: John
-        used_quota_private:
-          type: integer
-          description: Account used private quota
-          example: 0
-        modified_date:
-          type: string
-          description: Date of last account modification
-          example: '2018-05-22T04:04:04'
-        used_quota:
-          type: integer
-          description: Account total used quota
-          example: 0
-        created_date:
-          type: string
-          description: Date when account was created
-          example: '2018-05-22T04:04:04'
-        quota:
-          type: integer
-          description: Account quota
-          example: 0
-        group_id:
-          type: integer
-          description: Account group id
-          example: 0
-        institution_user_id:
-          type: string
-          description: Account institution user id
-          example: djohn42
-        institution_id:
-          type: integer
-          description: Account institution
-          example: 1
-        email:
-          type: string
-          description: User email
-          example: user@domain.com
-        used_quota_public:
-          type: integer
-          description: Account public used quota
-          example: 0
-        pending_quota_request:
-          type: boolean
-          description: True if a quota request is pending
-          example: true
-        active:
-          type: integer
-          description: Account activity status
-          example: 0
-        maximum_file_size:
-          type: integer
-          description: Maximum upload size for account
-          example: 0
-        user_id:
-          type: integer
-          description: User id associated with account, useful for example for adding the account as an author to an item
-          example: 1000001
-        orcid_id:
-          type: string
-          description: ORCID iD associated to account
-          example: 0000-0001-2345-6789
-        symplectic_user_id:
-          type: string
-          description: Symplectic ID associated to account
-          example: djohn42
-      x-tag: other
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Figshare altmetric oauth API
+  title: Figshare OAUTH API
   description: Figshare API v2 - Full REST API documentation for managing articles, collections, projects and more. Saved for the University of the Witwatersrand Open Data Vault, which is hosted on the Figshare platform; datasets are accessible programmatically via this public API.
   version: '2.0'
   contact:
@@ -106,6 +106,16 @@ components:
           type: string
           description: Required if grant_type is 'password'
       x-tag: oauth
+    ErrorMessage:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: A machine friendly error code, used by the dev team to identify the error.
+        message:
+          type: string
+          description: A human friendly message explaining the error.
+      x-tag: common
     OAuthToken:
       required:
       - access_token
@@ -138,16 +148,6 @@ components:
           description: The scope of the access token
           example: all
       x-tag: oauth
-    ErrorMessage:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: A machine friendly error code, used by the dev team to identify the error.
-        message:
-          type: string
-          description: A human friendly message explaining the error.
-      x-tag: common
   securitySchemes:
     OAuth2:
       type: oauth2

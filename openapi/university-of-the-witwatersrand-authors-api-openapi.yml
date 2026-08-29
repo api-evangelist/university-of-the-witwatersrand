@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Figshare altmetric authors API
+  title: Figshare Authors API
   description: Figshare API v2 - Full REST API documentation for managing articles, collections, projects and more. Saved for the University of the Witwatersrand Open Data Vault, which is hosted on the Figshare platform; datasets are accessible programmatically via this public API.
   version: '2.0'
   contact:
@@ -126,6 +126,56 @@ components:
       allOf:
       - $ref: '#/components/schemas/Author'
       x-tag: authors
+    Author:
+      required:
+      - first_name
+      - full_name
+      - id
+      - is_active
+      - last_name
+      - orcid_id
+      - url_name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Author id
+          example: 97657
+        full_name:
+          type: string
+          description: Author full name
+          example: John Doe
+        first_name:
+          type: string
+          description: Author first name
+          example: John
+        last_name:
+          type: string
+          description: Author last name
+          example: Doe
+        is_active:
+          type: boolean
+          description: True if author has published items
+          example: false
+        url_name:
+          type: string
+          description: Author url name
+          example: John_Doe
+        orcid_id:
+          type: string
+          description: Author Orcid
+          example: 1234-5678-9123-1234
+      x-tag: authors
+    ErrorMessage:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: A machine friendly error code, used by the dev team to identify the error.
+        message:
+          type: string
+          description: A human friendly message explaining the error.
+      x-tag: common
     PrivateAuthorsSearch:
       type: object
       properties:
@@ -177,56 +227,6 @@ components:
           type: boolean
           description: Return only authors that have published items if True
       x-tag: authors
-    Author:
-      required:
-      - first_name
-      - full_name
-      - id
-      - is_active
-      - last_name
-      - orcid_id
-      - url_name
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Author id
-          example: 97657
-        full_name:
-          type: string
-          description: Author full name
-          example: John Doe
-        first_name:
-          type: string
-          description: Author first name
-          example: John
-        last_name:
-          type: string
-          description: Author last name
-          example: Doe
-        is_active:
-          type: boolean
-          description: True if author has published items
-          example: false
-        url_name:
-          type: string
-          description: Author url name
-          example: John_Doe
-        orcid_id:
-          type: string
-          description: Author Orcid
-          example: 1234-5678-9123-1234
-      x-tag: authors
-    ErrorMessage:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: A machine friendly error code, used by the dev team to identify the error.
-        message:
-          type: string
-          description: A human friendly message explaining the error.
-      x-tag: common
   securitySchemes:
     OAuth2:
       type: oauth2
