@@ -162,6 +162,8 @@ apis:
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -181,6 +183,8 @@ apis:
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
