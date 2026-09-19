@@ -255,6 +255,10 @@ apis:
   tags:
   - Research Data
   - Open Data
+  - Tenants
+  tags_raw:
+  - Research Data
+  - Open Data
   - Tenant
   properties:
   - type: Website
