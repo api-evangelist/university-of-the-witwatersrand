@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: WIReDSpace DSpace REST Root API
-  description: REST API for WIReDSpace, the University of the Witwatersrand institutional repository, running DSpace 9.2. The API serves a HAL/JSON root document at /server/api and exposes read access to communities, collections, items, bundles, bitstreams, and discovery/browse endpoints. This specification documents the public, anonymously-readable read surfaces verified live against the deployment; write, workflow, and administrative endpoints exist in DSpace but require authentication and are not enumerated here.
+  description: REST API for WIReDSpace, the University of the Witwatersrand institutional repository, running DSpace 9.2.
   version: '9.2'
   contact:
     name: Wits Open Scholarship, Library

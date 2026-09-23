@@ -184,16 +184,16 @@
   "variable": [
     {
       "type": "string",
-      "value": "https://api.figshare.com/v2",
+      "value": "https://wiredspace.wits.ac.za/server/api",
       "key": "baseUrl"
     }
   ],
   "info": {
     "_postman_id": "d8d39537-f40d-41e3-8ed4-5448da8ec4e4",
-    "name": "Figshare altmetric Items API",
+    "name": "WIReDSpace DSpace REST Items API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Figshare API v2 - Full REST API documentation for managing articles, collections, projects and more. Saved for the University of the Witwatersrand Open Data Vault, which is hosted on the Figshare platform; datasets are accessible programmatically via this public API.\n\nContact Support:\n Name: Figshare Support",
+      "content": "Machine-readable request collection for WIReDSpace, the University of the Witwatersrand institutional repository (DSpace 9.2). Operations verified live against the Wits-operated deployment.\n\nContact: Wits Open Scholarship, Library <openscholarship.library@wits.ac.za>",
       "type": "text/plain"
     }
   }

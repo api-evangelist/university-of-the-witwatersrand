@@ -1,0 +1,161 @@
+generated: '2026-08-30'
+method: probed
+source: live probes of wiredspace.wits.ac.za, idp.wits.ac.za, metadata.safire.ac.za, api.datacite.org
+provider: University of the Witwatersrand
+providerId: university-of-the-witwatersrand
+regime: education
+description: >-
+  Domain-standard conformance for the University of the Witwatersrand, measured against the Kin Score
+  `education` regime standards list (scim, lti, oneroster, ed-fi, caliper, qti, oai-pmh, shibboleth,
+  saml, orcid, datacite, crossref). Every entry below is a probe, not a prose claim, and each carries
+  the operator of the surface it was measured on. Nothing here is asserted from documentation alone.
+conformance:
+- standard: oai-pmh
+  version: '2.0'
+  status: conformant
+  x-operator: institution
+  surface: WIReDSpace OAI-PMH interface
+  location: openapi/university-of-the-witwatersrand-request-api-openapi.yml
+  endpoint: https://wiredspace.wits.ac.za/server/oai/request
+  detail: >-
+    Full OAI-PMH 2.0 verb set answered anonymously on a host under the university's own registrable
+    domain. Identify returns repositoryName "WIReDSpace", repositoryIdentifier wiredspace.wits.ac.za,
+    adminEmail openscholarship.library@wits.ac.za, granularity YYYY-MM-DDThh:mm:ssZ. Thirteen metadata
+    prefixes are advertised: oai_dc, qdc, dim, mets, mods, ore, didl, rdf, marc, etdms, rioxx,
+    uketd_dc, xoai. Sets are community-scoped under the 10539 Handle prefix (com_10539_*).
+  evidence:
+  - url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+    status: 200
+    note: protocolVersion 2.0, repositoryName WIReDSpace
+  - url: https://wiredspace.wits.ac.za/server/oai/request?verb=ListMetadataFormats
+    status: 200
+    note: 13 metadata prefixes
+  - url: https://wiredspace.wits.ac.za/server/oai/request?verb=ListSets
+    status: 200
+    note: community sets keyed to Handle prefix 10539
+- standard: saml
+  version: '2.0'
+  status: conformant
+  x-operator: institution
+  surface: Wits identity provider (SAFIRE / eduGAIN)
+  location: https://idp.wits.ac.za/safss/saml2/idp/metadata.php
+  endpoint: https://idp.wits.ac.za/safss/saml2/idp/metadata.php
+  detail: >-
+    The university operates its own SAML 2.0 identity provider on its own domain and serves signed
+    IdP metadata as application/samlmetadata+xml. entityID
+    https://idp.wits.ac.za/safss/saml2/idp/metadata.php, IDPSSODescriptor with
+    protocolSupportEnumeration urn:oasis:names:tc:SAML:2.0:protocol. This is the single clearest
+    institution-operated machine-readable surface Wits publishes after WIReDSpace, and it is not
+    catalogued anywhere as an API.
+  evidence:
+  - url: https://idp.wits.ac.za/safss/saml2/idp/metadata.php
+    status: 200
+    note: 7,670 bytes, content-type application/samlmetadata+xml
+- standard: shibboleth
+  status: partial
+  x-operator: institution
+  surface: Wits IdP entity in the SAFIRE federation aggregate
+  location: https://metadata.safire.ac.za/safire-prod-idp.xml
+  detail: >-
+    The Wits entity carries the Shibboleth metadata extension schema
+    (urn:mace:shibboleth:metadata:1.0) with shibmd:Scope values wits.ac.za and students.wits.ac.za,
+    and is registered by SAFIRE (registrationAuthority https://safire.ac.za, registry-id 000021,
+    schacHomeOrganization wits.ac.za, schacHomeOrganizationType
+    urn:schac:homeOrganizationType:int:university) with publish-to-edugain true and the REFEDS
+    Research and Scholarship plus Anonymous entity categories. Marked `partial` and not `conformant`
+    because the deployed IdP software is SimpleSAMLphp (path /safss/) rather than Shibboleth IdP —
+    the metadata profile is Shibboleth's, the implementation is not.
+  evidence:
+  - url: https://metadata.safire.ac.za/safire-prod-idp.xml
+    status: 200
+    note: 344,988 bytes, 37 entities, one of them Wits
+- standard: datacite
+  status: conformant
+  x-operator: tenant
+  surface: Wits Open Data Vault (Figshare tenant)
+  location: https://wits.figshare.com/
+  detail: >-
+    Wits is a registered DataCite repository client, id `wits.figshare`, name "University of
+    Witwatersrand". DOI minting for research data therefore happens under the university's own
+    DataCite membership — a real institutional fact — but through the Figshare platform it contracted,
+    which is why this entry is operator `tenant` and not `institution`. WIReDSpace itself mints Handle
+    identifiers under the 10539 prefix, not DOIs.
+  evidence:
+  - url: https://api.datacite.org/clients?query=witwatersrand
+    status: 200
+    note: 'total 1: client id wits.figshare'
+- standard: orcid
+  status: not-found
+  detail: >-
+    The WIReDSpace DSpace 9.2 root document advertises 80 endpoint links and none of them is an ORCID
+    integration surface. No institution-operated ORCID member API or public researcher-identifier
+    endpoint was found.
+  evidence:
+  - url: https://wiredspace.wits.ac.za/server/api
+    status: 200
+    note: 80 _links, no orcid entry
+- standard: crossref
+  status: not-found
+  detail: No institution-operated Crossref deposit or query surface found; Wits registers DOIs via DataCite.
+- standard: scim
+  status: not-found
+  detail: No public SCIM provisioning endpoint. Identity provisioning is behind institutional SSO.
+- standard: lti
+  status: not-found
+  detail: >-
+    No publicly documented LTI tool or platform registration surface. Wits runs a Sakai-family LMS
+    behind authentication; nothing machine-readable is exposed anonymously.
+- standard: oneroster
+  status: not-found
+  detail: No OneRoster endpoint found.
+- standard: ed-fi
+  status: not-found
+  detail: Ed-Fi is a US K-12 data standard; not applicable to a South African university and not found.
+- standard: caliper
+  status: not-found
+  detail: No Caliper analytics endpoint found.
+- standard: qti
+  status: not-found
+  detail: No QTI assessment interchange surface found.
+observed_beyond_regime:
+- standard: opensearch
+  status: conformant
+  x-operator: institution
+  detail: >-
+    WIReDSpace serves an OpenSearch 1.1 description document, giving the repository a second
+    standards-based query surface alongside OAI-PMH.
+  evidence:
+  - url: https://wiredspace.wits.ac.za/server/opensearch/service
+    status: 200
+- standard: handle-system
+  status: conformant
+  x-operator: institution
+  detail: >-
+    Every WIReDSpace object carries a Handle under the 10539 prefix (sample identifier
+    oai:wiredspace.wits.ac.za:10539/1234), resolvable through hdl.handle.net.
+  evidence:
+  - url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+    status: 200
+    note: oai-identifier sampleIdentifier oai:wiredspace.wits.ac.za:10539/1234
+- standard: coar-notify
+  status: auth-gated
+  x-operator: institution
+  detail: >-
+    The DSpace deployment advertises COAR Notify / LDN endpoints (ldnservices, notifyrequests,
+    submissioncoarnotifyconfigs) in its root document, but both return 401 to an anonymous caller, so
+    whether any inbox is configured cannot be read from outside.
+  evidence:
+  - url: https://wiredspace.wits.ac.za/server/api/ldn/ldnservices
+    status: 401
+  - url: https://wiredspace.wits.ac.za/server/api/config/submissioncoarnotifyconfigs
+    status: 401
+- standard: sitemaps
+  status: conformant
+  x-operator: institution
+  detail: WIReDSpace publishes a sitemap index for the repository.
+  evidence:
+  - url: https://wiredspace.wits.ac.za/sitemap_index.xml
+    status: 200
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

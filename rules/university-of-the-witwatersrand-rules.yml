@@ -1,7 +1,9 @@
 ---
-# Spectral ruleset encoding patterns observed across the University of the
-# Witwatersrand machine-readable interfaces (DSpace 9.2 REST, OAI-PMH 2.0,
-# Figshare v2). Apply with: spectral lint -r this-file.yml <openapi.yaml>
+# Spectral ruleset encoding patterns observed across the machine-readable
+# interfaces the University of the Witwatersrand actually operates: WIReDSpace
+# DSpace 9.2 REST and OAI-PMH 2.0. The Figshare v2 contract this ruleset was
+# originally measured against was vendor-operated and was removed from this repo
+# on 2026-08-30. Apply with: spectral lint -r this-file.yml <openapi.yaml>
 formats:
   - oas3
 rules:

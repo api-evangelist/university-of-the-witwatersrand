@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Figshare altmetric Discovery API",
+    "name": "WIReDSpace DSpace REST Discovery API",
     "version": "2.0"
   },
   "items": [
@@ -18,7 +18,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://api.figshare.com/v2/discover/browses"
+            "url": "https://wiredspace.wits.ac.za/server/api/discover/browses"
           },
           "docs": "Returns the configured discovery browse indexes (e.g. by title, author, subject, date issued)."
         },
@@ -29,7 +29,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://api.figshare.com/v2/discover/search/objects",
+            "url": "https://wiredspace.wits.ac.za/server/api/discover/search/objects",
             "params": [
               {
                 "name": "query",

@@ -1,13 +1,19 @@
 ---
+generated: '2026-08-30'
+method: derived
+source: >-
+  openapi/university-of-the-witwatersrand-*-openapi.yml (institution-operated WIReDSpace contracts),
+  live probes of wiredspace.wits.ac.za, idp.wits.ac.za and api.datacite.org
 vocabulary:
   name: University of the Witwatersrand API Vocabulary
   description: >-
-    Controlled vocabulary of the core terms used across the University of the
-    Witwatersrand machine-readable interfaces: the WIReDSpace DSpace 9.2
-    institutional repository (REST and OAI-PMH) and the Figshare-powered Wits
-    Open Data Vault. Definitions reflect terms verified live against the
-    deployments.
-  version: "1.0.0"
+    Controlled vocabulary of the terms used across the machine-readable surfaces the University of
+    the Witwatersrand actually operates: the WIReDSpace DSpace 9.2 institutional repository (REST and
+    OAI-PMH), the Wits SAML identity provider registered in SAFIRE, and the Wits Open Data Vault,
+    which is Wits data on a Figshare tenant. Definitions reflect terms verified live against the
+    deployments. Terms that belonged to the Figshare v2 API contract rather than to Wits (Article,
+    Defined Type) were removed on 2026-08-30 together with that vendor contract.
+  version: "1.1.0"
   terms:
     - term: Community
       definition: >-
@@ -30,7 +36,8 @@ vocabulary:
     - term: Handle
       definition: >-
         A persistent identifier assigned to DSpace objects under the 10539 prefix,
-        e.g. 10539/38213, resolvable via hdl.handle.net.
+        e.g. 10539/38213, resolvable via hdl.handle.net. WIReDSpace identifies its
+        objects with Handles, not DOIs.
       tags: [identifier, persistent, dspace]
     - term: Metadata Value
       definition: >-
@@ -50,19 +57,37 @@ vocabulary:
     - term: Set
       definition: >-
         An OAI-PMH grouping used for selective harvesting of a subset of records.
+        WIReDSpace sets are community-scoped and keyed to the Handle prefix, e.g.
+        com_10539_38213.
       tags: [oai-pmh, harvesting]
-    - term: Article
+    - term: Metadata Prefix
       definition: >-
-        A Figshare research output record (dataset, software, paper) in the Wits
-        Open Data Vault, carrying a DOI and download URLs.
-      tags: [figshare, open-data, dataset]
+        The OAI-PMH metadata format selector. WIReDSpace advertises thirteen —
+        oai_dc, qdc, dim, mets, mods, ore, didl, rdf, marc, etdms, rioxx, uketd_dc, xoai.
+      tags: [oai-pmh, metadata, format]
+    - term: Open Data Vault
+      definition: >-
+        The Wits research data repository at opendata.wits.ac.za. The hostname is the
+        university's; the platform and the API contract underneath it are Figshare's. Wits
+        operates the repository as a tenant, not as its engineer.
+      tags: [research-data, tenant, figshare, open-data]
     - term: DOI
       definition: >-
-        Digital Object Identifier minted for datasets in the Wits Open Data Vault,
-        e.g. 10.6084/m9.figshare.<id>.
-      tags: [identifier, persistent, figshare, doi]
-    - term: Defined Type
+        Digital Object Identifier minted for Open Data Vault datasets under the Wits
+        DataCite prefix 10.71796 (DataCite repository client wits.figshare), e.g.
+        10.71796/wits-figshare.33306885.
+      tags: [identifier, persistent, datacite, doi]
+    - term: Identity Provider
       definition: >-
-        Figshare classification of a research output (e.g. dataset, software,
-        figure, media), exposed as defined_type and defined_type_name.
-      tags: [figshare, classification]
+        The Wits SAML 2.0 identity provider at idp.wits.ac.za, registered in SAFIRE (the
+        South African Identity Federation) and published to eduGAIN. It serves signed
+        SAML metadata and is the university's own machine-readable identity surface.
+      tags: [saml, shibboleth, federation, identity]
+    - term: Scope
+      definition: >-
+        The shibmd:Scope value asserted by the Wits IdP for the domains whose users it can
+        authenticate — wits.ac.za and students.wits.ac.za.
+      tags: [saml, shibboleth, federation]
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

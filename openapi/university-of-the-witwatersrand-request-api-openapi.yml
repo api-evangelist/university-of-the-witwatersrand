@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: WIReDSpace OAI-PMH Interface Request API
-  description: 'Open Archives Initiative Protocol for Metadata Harvesting (OAI-PMH) version 2.0 interface for WIReDSpace, the University of the Witwatersrand institutional repository. The protocol is a single-endpoint, verb-driven HTTP API returning XML. Verified live: the Identify response names the repository "WIReDSpace", protocolVersion 2.0, granularity YYYY-MM-DDThh:mm:ssZ, and deletedRecord policy "transient". Responses are XML conforming to the OAI-PMH schema, not JSON; this specification documents the request surface only.'
+  description: Open Archives Initiative Protocol for Metadata Harvesting (OAI-PMH) version 2.0 interface for WIReDSpace, the University of the Witwatersrand institutional repository.
   version: '2.0'
   contact:
     name: Wits Open Scholarship, Library

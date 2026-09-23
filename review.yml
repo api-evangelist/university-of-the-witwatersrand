@@ -3,7 +3,7 @@ name: University of the Witwatersrand
 description: University of the Witwatersrand public developer/API footprint review for APIs.json cataloging.
 url: https://raw.githubusercontent.com/api-evangelist/university-of-the-witwatersrand/refs/heads/main/review.yml
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-30'
 reviews:
   - date: '2026-06-03'
     rating: 2
@@ -44,4 +44,79 @@ reviews:
       - url: https://www.linkedin.com/school/university-of-the-witwatersrand/
         status: 999
         note: Official LinkedIn school page; LinkedIn returns 999 to automated fetches (bot-blocked).
----
+  - date: '2026-08-30'
+    rating: 3
+    summary: >-
+      University-pipeline re-profile with the operator axis applied. The June profile credited Wits
+      with the generic Figshare v2 API contract (api.figshare.com/v2) and nine of its per-tag splits
+      — altmetric, articles, authors, institutions, oauth, other, profiles, projects, symplectic —
+      all of them Figshare's engineering shipped under the Wits slug, and all of them baseURL'd in
+      apis.yml to wiredspace.wits.ac.za, a host they never touch. Those ten specs and everything
+      derived from them were removed. A tenth contract, the collections API, had been welded by the
+      per-tag split across two source specs: twenty-one Figshare /collections and /account/collections
+      paths carrying two genuine DSpace /core/collections paths. It was repaired from its true parent,
+      not deleted. All thirty request-collection artifacts, including the five describing DSpace-only
+      operations, carried the title "Figshare altmetric ..." and baseUrl https://api.figshare.com/v2;
+      the nine vendor ones were removed and the six institution ones re-based. What survives is real
+      and was probed live: WIReDSpace DSpace 9.2 REST, WIReDSpace OAI-PMH 2.0 with thirteen metadata
+      prefixes, and a new find — the Wits SAML 2.0 identity provider, registered in SAFIRE and
+      published to eduGAIN. The Open Data Vault is now recorded correctly as a Figshare tenant on
+      opendata.wits.ac.za (CNAME proxy-eu-01.figshare.com), with DOIs under the Wits DataCite prefix
+      10.71796 — an institutional fact whose contract is still the vendor's. Expect this repo's score
+      to fall; the number it had was Figshare's.
+    endpoints:
+      - url: https://wiredspace.wits.ac.za/server/api
+        status: 200
+        note: DSpace 9.2 REST root, 80 endpoint links, HAL/JSON. Institution-operated.
+      - url: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
+        status: 200
+        note: OAI-PMH 2.0, repositoryName WIReDSpace, adminEmail openscholarship.library@wits.ac.za.
+      - url: https://wiredspace.wits.ac.za/server/oai/request?verb=ListMetadataFormats
+        status: 200
+        note: Thirteen prefixes - oai_dc, qdc, dim, mets, mods, ore, didl, rdf, marc, etdms, rioxx, uketd_dc, xoai.
+      - url: https://wiredspace.wits.ac.za/server/opensearch/service
+        status: 200
+        note: OpenSearch 1.1 description document; a second standards-based query surface.
+      - url: https://wiredspace.wits.ac.za/server/api/authn/status
+        status: 200
+        note: '"authenticated": false - anonymous read confirmed, no credential needed.'
+      - url: https://wiredspace.wits.ac.za/server/api/ldn/ldnservices
+        status: 401
+        note: COAR Notify / LDN endpoints advertised in the root but auth-gated; presence unreadable anonymously.
+      - url: https://idp.wits.ac.za/safss/saml2/idp/metadata.php
+        status: 200
+        note: >-
+          NEW FIND. SAML 2.0 IdP metadata, content-type application/samlmetadata+xml, entityID
+          https://idp.wits.ac.za/safss/saml2/idp/metadata.php, shibmd:Scope wits.ac.za and
+          students.wits.ac.za. Institution-operated.
+      - url: https://metadata.safire.ac.za/safire-prod-idp.xml
+        status: 200
+        note: >-
+          SAFIRE federation aggregate, 37 entities; Wits registry-id 000021, publish-to-edugain true,
+          REFEDS Research and Scholarship category.
+      - url: https://api.datacite.org/clients?query=witwatersrand
+        status: 200
+        note: DataCite repository client wits.figshare, 214 DOIs under prefix 10.71796.
+      - url: https://opendata.wits.ac.za/
+        status: 202
+        note: >-
+          Wits Open Data Vault. CNAME proxy-eu-01.figshare.com; AWS WAF challenge
+          (x-amzn-waf-action: challenge) to automated fetches. Live, tenant-operated.
+      - url: https://self-service.wits.ac.za/
+        status: 401
+        note: Student self-service; authenticated, no public API surface.
+      - url: https://api.wits.ac.za/
+        status: 0
+        note: NXDOMAIN. No central API host exists.
+      - url: https://data.wits.ac.za/
+        status: 0
+        note: NXDOMAIN. No CKAN/Socrata open-data portal.
+      - url: https://www.wits.ac.za/course-finder/
+        status: 200
+        note: Course finder is HTML only; no machine-readable course/timetable interface behind it.
+      - url: https://www.wits.ac.za/ai-policies/
+        status: 200
+        note: Institutional AI policy hub; governance document, not an API artifact.
+      - url: https://www.wits.ac.za/robots.txt
+        status: 200
+        note: Served as RTF rather than plain text - the robots directives are wrapped in RTF control words.

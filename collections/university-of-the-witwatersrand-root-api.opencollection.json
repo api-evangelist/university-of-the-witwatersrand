@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Figshare altmetric Root API",
+    "name": "WIReDSpace DSpace REST Root API",
     "version": "2.0"
   },
   "items": [
@@ -18,7 +18,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://api.figshare.com/v2/"
+            "url": "https://wiredspace.wits.ac.za/server/api/"
           },
           "docs": "Returns the DSpace HAL/JSON root document, including dspaceVersion, dspaceName, and an _links map of all available endpoints."
         }
