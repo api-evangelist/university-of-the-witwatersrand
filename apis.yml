@@ -135,6 +135,8 @@ apis:
   humanURL: https://wiredspace.wits.ac.za/
   baseURL: https://wiredspace.wits.ac.za/server/api
   tags:
+  - Community
+  tags_raw:
   - Communities
   properties:
   - type: OpenAPI
