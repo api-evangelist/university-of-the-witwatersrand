@@ -53,6 +53,39 @@ paths:
           description: Community not found
 components:
   schemas:
+    PageInfo:
+      type: object
+      properties:
+        size:
+          type: integer
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        number:
+          type: integer
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+    CommunityPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          properties:
+            communities:
+              type: array
+              items:
+                $ref: '#/components/schemas/Community'
+        _links:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Link'
+        page:
+          $ref: '#/components/schemas/PageInfo'
     MetadataValue:
       type: object
       properties:
@@ -70,28 +103,6 @@ components:
           type: integer
         place:
           type: integer
-    CommunityPage:
-      type: object
-      properties:
-        _embedded:
-          type: object
-          properties:
-            communities:
-              type: array
-              items:
-                $ref: '#/components/schemas/Community'
-        _links:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Link'
-        page:
-          $ref: '#/components/schemas/PageInfo'
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri
     Community:
       type: object
       properties:
@@ -121,18 +132,15 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/Link'
-    PageInfo:
-      type: object
-      properties:
-        size:
-          type: integer
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        number:
-          type: integer
   parameters:
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the DSpace object
+      schema:
+        type: string
+        format: uuid
     Size:
       name: size
       in: query
@@ -151,11 +159,3 @@ components:
         type: integer
         minimum: 0
         default: 0
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      description: The UUID of the DSpace object
-      schema:
-        type: string
-        format: uuid

@@ -39,12 +39,6 @@ paths:
           description: Item not found
 components:
   schemas:
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri
     DSpaceObject:
       type: object
       properties:
@@ -70,6 +64,12 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/Link'
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
     MetadataValue:
       type: object
       properties:

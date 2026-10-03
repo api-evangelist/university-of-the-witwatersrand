@@ -62,23 +62,6 @@ paths:
                 $ref: '#/components/schemas/DSpaceObjectPage'
 components:
   schemas:
-    DSpaceObjectPage:
-      type: object
-      properties:
-        _embedded:
-          type: object
-        _links:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Link'
-        page:
-          $ref: '#/components/schemas/PageInfo'
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri
     PageInfo:
       type: object
       properties:
@@ -90,6 +73,23 @@ components:
           type: integer
         number:
           type: integer
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+    DSpaceObjectPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+        _links:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Link'
+        page:
+          $ref: '#/components/schemas/PageInfo'
   parameters:
     Size:
       name: size
