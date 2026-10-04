@@ -52,17 +52,6 @@ paths:
           description: Collection not found
 components:
   schemas:
-    PageInfo:
-      type: object
-      properties:
-        size:
-          type: integer
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        number:
-          type: integer
     DSpaceObject:
       type: object
       properties:
@@ -122,15 +111,18 @@ components:
           type: integer
         place:
           type: integer
+    PageInfo:
+      type: object
+      properties:
+        size:
+          type: integer
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        number:
+          type: integer
   parameters:
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      description: The UUID of the DSpace object
-      schema:
-        type: string
-        format: uuid
     Size:
       name: size
       in: query
@@ -149,3 +141,11 @@ components:
         type: integer
         minimum: 0
         default: 0
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the DSpace object
+      schema:
+        type: string
+        format: uuid

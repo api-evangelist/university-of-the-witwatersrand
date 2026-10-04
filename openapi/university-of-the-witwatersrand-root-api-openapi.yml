@@ -33,6 +33,12 @@ paths:
                 $ref: '#/components/schemas/Root'
 components:
   schemas:
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
     Root:
       type: object
       properties:
@@ -57,9 +63,3 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/Link'
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri

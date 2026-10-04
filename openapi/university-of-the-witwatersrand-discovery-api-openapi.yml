@@ -61,35 +61,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/DSpaceObjectPage'
 components:
-  schemas:
-    PageInfo:
-      type: object
-      properties:
-        size:
-          type: integer
-        totalElements:
-          type: integer
-        totalPages:
-          type: integer
-        number:
-          type: integer
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri
-    DSpaceObjectPage:
-      type: object
-      properties:
-        _embedded:
-          type: object
-        _links:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Link'
-        page:
-          $ref: '#/components/schemas/PageInfo'
   parameters:
     Size:
       name: size
@@ -109,3 +80,32 @@ components:
         type: integer
         minimum: 0
         default: 0
+  schemas:
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+    DSpaceObjectPage:
+      type: object
+      properties:
+        _embedded:
+          type: object
+        _links:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Link'
+        page:
+          $ref: '#/components/schemas/PageInfo'
+    PageInfo:
+      type: object
+      properties:
+        size:
+          type: integer
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        number:
+          type: integer
