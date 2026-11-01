@@ -1,4 +1,4 @@
-# University of the Witwatersrand (university-of-the-witwatersrand)
+# University of the Witwatersrand
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,53 +64,167 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-The University of the Witwatersrand (Wits) is a leading public research university in Johannesburg, South Africa, ranked #268 in the QS World University Rankings 2025. This repository catalogs the institution's public, machine-readable developer/API footprint as an APIs.json (0.19) provider profile for the API Evangelist network. Wits has no central branded developer portal; the confirmed public surfaces are standards-based library and open-research interfaces.
+The University of the Witwatersrand (Wits) is a public research university in Johannesburg, South Africa (ROR 03rp50x72). Wits operates no central developer portal and no student, timetable or registrar API. What it does operate, on its own domain and its own infrastructure, is WIReDSpace — the institutional repository running DSpace 9.2 — which exposes a HAL/JSON REST API and a complete OAI-PMH 2.0 harvesting interface advertising thirteen metadata formats, both answering anonymous callers. It also runs its own SAML 2.0 identity provider, registered in SAFIRE (the South African Identity Federation) and published to eduGAIN, which serves signed metadata as application/samlmetadata+xml — a genuine machine-readable institutional surface that is almost never catalogued as one. Its research data repository, the Wits Open Data Vault at opendata.wits.ac.za, is a Figshare tenant: the hostname is the university's and the 214 DOIs under the Wits DataCite prefix 10.71796 are the university's, but the API contract underneath is Figshare's and is catalogued against Figshare, not against Wits. Everything else in the estate — library discovery, LibGuides, the LMS, student self-service — is vendor software behind authentication. This profile was corrected on 2026-08-30: it previously credited Wits with the generic Figshare v2 API and nine of its tag splits, which were the vendor's engineering, not the university's.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/university-of-the-witwatersrand/refs/heads/main/apis.yml
+**Areas:** University · Higher Education · Education · Research · South Africa · Africa · Institutional Repository · Research Data · Open Access · Identity Federation · OAI-PMH · DSpace
 
-Run with Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=university-of-the-witwatersrand-api-evangelist&utm_content=repo
+## University of the Witwatersrand on APIs.io
 
-## Type
+Everything profiled for University of the Witwatersrand is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/university-of-the-witwatersrand/](https://apis.io/providers/university-of-the-witwatersrand/)** — or go straight to one of the APIs or properties below.
 
-- Index
-- Consumer
-- 3rd-Party
+### APIs (7)
 
-## Tags
+- [WIReDSpace DSpace REST Root API](https://apis.io/apis/university-of-the-witwatersrand/university-of-the-witwatersrand-root-api/) — HAL/JSON root document of the WIReDSpace DSpace 9.2 REST API, advertising 80 endpoint links including communities, collections, items, discovery, authn and…
+- [WIReDSpace DSpace REST Communities API](https://apis.io/apis/university-of-the-witwatersrand/university-of-the-witwatersrand-communities-api/) — Top-level and sub-community containers in WIReDSpace, aligned to Wits faculties, schools and research groupings. Anonymous read, paginated HAL collections.
+- [WIReDSpace DSpace REST Collections API](https://apis.io/apis/university-of-the-witwatersrand/university-of-the-witwatersrand-collections-api/) — Collections of items within WIReDSpace communities. Repaired on 2026-08-30: this contract had been welded to twenty-one Figshare /collections and…
+- [WIReDSpace DSpace REST Items API](https://apis.io/apis/university-of-the-witwatersrand/university-of-the-witwatersrand-items-api/) — Individual repository records — theses, dissertations, research articles and reports — each with Dublin Core metadata, bitstreams and a Handle under the…
+- [WIReDSpace DSpace REST Discovery API](https://apis.io/apis/university-of-the-witwatersrand/university-of-the-witwatersrand-discovery-api/) — Browse indexes and the search/discovery endpoint over WIReDSpace holdings, plus an OpenSearch 1.1 description document at /server/opensearch/service.
+- [WIReDSpace OAI-PMH Interface](https://apis.io/apis/university-of-the-witwatersrand/university-of-the-witwatersrand-request-api/) — OAI-PMH 2.0 metadata harvesting endpoint for WIReDSpace. Single-endpoint, verb-driven, answering anonymously, advertising thirteen metadata prefixes…
+- [Wits Open Data Vault (Figshare tenant)](https://apis.io/apis/university-of-the-witwatersrand/university-of-the-witwatersrand-open-data-vault/) — The Wits research data repository. The hostname opendata.wits.ac.za is the university's and CNAMEs to proxy-eu-01.figshare.com; the DOIs are minted under…
 
-Education, Higher Education, University, Research, Open Data, Library, Institutional Repository, South Africa, Africa
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **WIReDSpace DSpace REST API** — DSpace 9.2 REST API for the Wits institutional repository (communities, collections, items, bitstreams, discovery). Docs: https://wiredspace.wits.ac.za/server/api
-- **WIReDSpace OAI-PMH** — OAI-PMH 2.0 metadata harvesting endpoint. Docs: https://wiredspace.wits.ac.za/server/oai/request?verb=Identify
-- **Wits Open Data Vault (Figshare)** — Figshare-powered research data repository (DOIs, Altmetric, Dimensions); programmatic access via the Figshare public API. Docs: https://docs.figshare.com/
+#### Agentic access (1)
 
-## Plans / Rate Limits / FinOps
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Plans: [plans/university-of-the-witwatersrand-plans-pricing.yml](plans/university-of-the-witwatersrand-plans-pricing.yml)
-- Rate Limits: [rate-limits/university-of-the-witwatersrand-rate-limits.yml](rate-limits/university-of-the-witwatersrand-rate-limits.yml)
-- FinOps: [finops/university-of-the-witwatersrand-finops.yml](finops/university-of-the-witwatersrand-finops.yml)
+- [University Of The Witwatersrand Agentic Access](https://apis.io/agentic-access/university-of-the-witwatersrand/university-of-the-witwatersrand-agentic-access/)
 
-## Timestamps
+#### JSON Schema (1)
 
-- Created: 2026-06-03
-- Modified: 2026-06-03
+The data models the API reads and writes.
 
-## Common Properties
+- [WIReDSpace Community](https://apis.io/schemas/university-of-the-witwatersrand/university-of-the-witwatersrand-community/)
 
-- Website: https://www.wits.ac.za/
-- Library: https://www.wits.ac.za/library/
-- GitHub: https://github.com/WitsSoftDev (Wits Mathematical Sciences Software Development Group; departmental, not a central institutional org)
-- LinkedIn: https://www.linkedin.com/school/university-of-the-witwatersrand/
+#### JSON Structure (1)
 
-## Notes
+Data models expressed in JSON Structure.
 
-- No-fabrication discipline applied. The WIReDSpace REST API root (DSpace 9.2) and OAI-PMH Identify response were both verified live.
-- The Wits Open Data Vault is confirmed (launched 2025 on Figshare with Altmetric/Dimensions); the institutional Figshare portal returned HTTP 403 to automated fetches, so the Figshare public API and the official announcement page are linked instead of an institution-specific portal URL.
-- No central Wits developer portal, open-data API gateway, or student/timetable/SIS API was found publicly documented. LibGuides/LibCal (Springshare) and identity/SSO systems exist but are vendor-hosted and gated.
-- The official institutional GitHub organization could not be confirmed; only departmental/course orgs (e.g., WitsSoftDev, WITS-COMS3010) were found.
+- [University Of The Witwatersrand Community Structure](https://apis.io/json-structure/university-of-the-witwatersrand/university-of-the-witwatersrand-community-structure/)
 
-## Maintainers
+#### JSON-LD (1)
 
-- Kin Lane — kin@apievangelist.com
+Linked-data contexts for the provider's vocabulary.
+
+- [University Of The Witwatersrand Context](https://apis.io/jsonld/university-of-the-witwatersrand/university-of-the-witwatersrand-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [University of the Witwatersrand API Vocabulary](https://apis.io/vocabularies/university-of-the-witwatersrand/university-of-the-witwatersrand-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [University Of The Witwatersrand Getcommunity Example](https://apis.io/examples/university-of-the-witwatersrand/university-of-the-witwatersrand-getCommunity-example/)
+- [University Of The Witwatersrand Oai Identify Example](https://apis.io/examples/university-of-the-witwatersrand/university-of-the-witwatersrand-oai-identify-example/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [WIReDSpace DSpace REST Collections API](https://apis.io/collections/university-of-the-witwatersrand/open-university-of-the-witwatersrand-collections-api/)
+- [WIReDSpace DSpace REST Communities API](https://apis.io/collections/university-of-the-witwatersrand/open-university-of-the-witwatersrand-communities-api/)
+- [WIReDSpace DSpace REST Discovery API](https://apis.io/collections/university-of-the-witwatersrand/open-university-of-the-witwatersrand-discovery-api/)
+- [WIReDSpace DSpace REST Items API](https://apis.io/collections/university-of-the-witwatersrand/open-university-of-the-witwatersrand-items-api/)
+- [WIReDSpace OAI-PMH Interface Request API](https://apis.io/collections/university-of-the-witwatersrand/open-university-of-the-witwatersrand-request-api/)
+- [WIReDSpace DSpace REST Root API](https://apis.io/collections/university-of-the-witwatersrand/open-university-of-the-witwatersrand-root-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [University of the Witwatersrand — jsonschema rules](https://apis.io/rules/university-of-the-witwatersrand/university-of-the-witwatersrand-jsonschema-spectral-rules/)
+- [University of the Witwatersrand API Rules](https://apis.io/rules/university-of-the-witwatersrand/university-of-the-witwatersrand-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [University Of The Witwatersrand Authentication](https://apis.io/security/university-of-the-witwatersrand/university-of-the-witwatersrand-authentication/)
+- [University Of The Witwatersrand Domain Security](https://apis.io/security/university-of-the-witwatersrand/university-of-the-witwatersrand-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [University Of The Witwatersrand Plans Pricing](https://apis.io/plans/university-of-the-witwatersrand/university-of-the-witwatersrand-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [University Of The Witwatersrand Rate Limits](https://apis.io/rate-limits/university-of-the-witwatersrand/university-of-the-witwatersrand-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [University Of The Witwatersrand Finops](https://apis.io/finops/university-of-the-witwatersrand/university-of-the-witwatersrand-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.wits.ac.za/)
+- [Blog](https://www.wits.ac.za/news/)
+- [Terms of service](https://www.wits.ac.za/site-assets/small-footer/terms-and-conditions-of-use/)
+- [Privacy policy](https://www.wits.ac.za/popia/)
+- [GitHub](https://github.com/WitsSoftDev)
+
+## API Evangelist rating
+
+**Kin Score 34.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 56.7 |
+| Contract governance | 13.6 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 25.0 |
+| Access clarity | 26.3 |
+
+**Agent readiness 22.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/university-of-the-witwatersrand/](https://apis.io/providers/university-of-the-witwatersrand/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for University of the Witwatersrand: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/university-of-the-witwatersrand/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
